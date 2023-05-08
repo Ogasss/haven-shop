@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>Haven 所想好物，这里都有</title>
+    <link rel="stylesheet" href="/css/my">
+    <link rel="stylesheet" href="/css/reset">
+</head>
+<body>
+    <div class="my-wrapper">
+        <div class="my-header-wrapper">
+            <img class="my-profile-image" id="profile" src="">
+            <div class="my-header-words">
+                <div class="my-other-name" id="other_name"></div>
+                <div class="my-signature-text" id="username"></div>
+            </div>
+            <div class="my-header-leave">
+                <div></div>
+                <div class="my-header-leave-wrapper">
+                    <div class="my-header-leave-word">退出</div>
+                    <img class="my-header-leave-img" src="/png/right" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="my-interactive-wrapper">
+            <div class="my-interactive-option">
+                <img class="my-interactive-img" src="/png/want">
+                <div class="my-interactive-text">
+                    喜欢
+                </div>
+            </div>
+            <div class="my-interactive-option">
+                <img class="my-interactive-img" src="/png/history">
+                <div class="my-interactive-text">
+                    看过
+                </div>
+            </div>
+            <div class="my-interactive-option">
+                <img class="my-interactive-img" src="/png/collect">
+                <div class="my-interactive-text">
+                    好店
+                </div>
+            </div>
+        </div>
+
+        <div class="my-indent-wrapper">
+            <div class="my-indent-header">
+                <div class="my-indent-title">
+                    订单
+                </div>
+                
+            </div> 
+            <div class="my-indent-options">
+                <a class="my-indent-option-wrapper" href="/app/indent_2">
+                    <img class="my-indent-img" src="/png/needpay">
+                    <div class="my-indent-text">
+                        待付款
+                    </div>
+                </a>
+                <a class="my-indent-option-wrapper" href="/app/indent_3">
+                    <img class="my-indent-img" src="/png/sending">
+                    <div class="my-indent-text">
+                        待收货
+                    </div>
+                </a>
+                <a class="my-indent-option-wrapper" href="/app/address">
+                    <img class="my-indent-img" src="/png/needget">
+                    <div class="my-indent-text">
+                        我的地址
+                    </div>
+                </a>
+                <div class="my-indent-option-wrapper">
+                    <img class="my-indent-img" src="/png/refund">
+                    <div class="my-indent-text">
+                        售后
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-action-wrapper">
+            <a class="action-option" href="/app/mine">
+                <div class="action-img-wrapper">
+                    <img src="/png/mine">
+                </div>
+                <span>
+                    个人信息
+                </span>
+            </a>
+        </div>
+        
+    </div>
+    <div id="home-nav"></div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.5/axios.js"></script>
+    <script src="/hooks/setComponent" type="module"></script>
+    <script src="/hooks/setExpiredTime" type="module"></script>
+    <script src="/js/my" type="module"></script>
+</body>
+</html>

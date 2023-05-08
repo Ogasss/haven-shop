@@ -1,0 +1,148 @@
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+.indent-none-img{
+    max-width: 100vw;
+}
+
+
+.indent-header{
+    position: sticky;
+    top: 0;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.26rem;
+    background-color: white;
+    z-index: 3;
+}
+    .indent-header .indent-header-back-button{
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+        .indent-header-back-img{
+            max-width: 100%;
+            transform: rotate(180deg);
+        }
+    .hidden{
+        visibility: hidden;
+    }
+
+    .indent-main{
+        padding: 0.26rem;
+        padding-bottom: 1.5rem;
+    }
+        .indent-main-indent-option{
+            position: relative;
+            margin-bottom: 0.26rem;
+            background-color: white;
+            border-radius: 5px 5px 0px 0px;
+            padding: 0.26rem;
+            font-size: 0.35rem;
+        }
+            .indent-main-indent-wrapper{
+                margin-bottom: 0.26rem;
+            }
+            .indent-main-indent-row-1{
+                display: flex;
+            }
+                .indent-main-indent-img-wrapper{
+                    border: 1px solid rgb(220, 220, 220);
+                    width: 2rem;
+                    height: 2rem;
+                    overflow: hidden;
+                    margin-right: 0.26rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                    .indent-main-indent-img{
+                        width: 90%;
+                    }
+                .indent-main-indent-msg-wrapper{
+                    width: 4rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+                    .indent-main-indent-title{
+                        margin-bottom: 0.13rem;
+                    }
+                .indent-main-indent-params-wrapper{
+                    display: flex;
+                    color: rgb(120, 120, 120);
+                    font-size: 0.3rem;
+                }
+                    .indent-main-indent-type{
+                        padding: 0 3px;
+                        border: 1px solid rgb(220, 220, 220);
+                        margin-right: 0.13rem;
+                    }
+                    .indent-main-indent-tag{
+                        border: 1px solid rgb(205, 85, 85);
+                        padding: 0 3px;
+                        display: inline-block;
+                        color: rgb(205, 85, 85);
+                        opacity: 0.9;
+                        font-size: 0.3rem;
+                    }
+                .indent-main-indent-old-price-wrapper{
+                    position: absolute;
+                    top: 1.3rem;
+                    right: 0.26rem;
+                    font-size: 0.35rem;
+                    font-weight: bold;
+                }
+        .indent-main-indent-discount-price-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.26rem;
+            opacity: 0.85;
+            font-size: 0.4rem;
+        }
+            .indent-main-indent-discount-price-word{
+            }
+            .indent-main-indent-discount-price{
+                color: rgb(205, 85, 85);
+            }
+        .indent-main-indent-price-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .indent-main-indent-price-word{
+            font-size: 0.3rem;
+            opacity: 0.8;
+            margin-right: -0.13rem;
+        }
+        .indent-main-indent-price{
+            font-size: 0.4rem;
+            font-weight: bold;
+        }
+        .indent-main-indent-action-button{
+            display: flex;
+        }
+            .indent-main-indent-cancel-button{
+                border: 1px solid rgb(220, 220, 220);
+                color: rgb(120, 120, 120);
+                width: 1.7rem;
+                height: 0.7rem;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.13rem;
+            }
+            .indent-main-indent-buy-button{
+                width: 1.7rem;
+                height: 0.7rem;
+                color: white;
+                background-color: rgb(205, 85, 85);
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }

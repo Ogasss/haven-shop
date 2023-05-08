@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>Haven 所想好物，这里都有</title>
+    <link rel="stylesheet" href="/css/signin">
+    <link rel="stylesheet" href="/css/reset">
+</head>
+<body>
+    <div class="signin-wrapper">
+        <div class="signin-back-button">
+            <img class="signin-left-button" src="/png/right">
+        </div>
+        <div class="signin-title">账号登录</div>
+        <div class="signin-warn-msg">&nbsp</div>
+        <label class="signin-username">
+            <div class="signin-username-chose">
+                +86
+                <img class="signin-down-button" src="/png/right">
+            </div>
+            <input class="signin-username-input" type="text" placeholder="手机号">
+        </label>
+        <label class="signin-password">
+            <input 
+            type = "password"
+            class="signin-password-input" placeholder="密码"></input>
+            <img src="/png/eye-hidden" class="signin-password-eye"
+            id="signin-password-show"
+            ></img>
+        </label>
+        <div class="signin-submit-button"><span class="signin-submit-text">登&nbsp&nbsp录</span></div>
+        <div class="signin-turn-change">
+            没有账号？点击这里注册
+        </div>
+        <div class="signin-agreement"></div>
+           
+    </div>
+    <div class="signin-other-methods">
+        <button><img src="/png/wechat"></button>
+        <button><img src="/png/weibo"></button>
+        <button><img src="/png/QQ"></button>
+    </div>    
+    
+    <!-- <div class="the-alert-wrapper">
+        <div class="the-alert-pad">
+            这是提示
+        </div>
+    </div> -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.5/axios.js"></script>
+    <script src="/hooks/sendRequest" type="module"></script>
+    <script src="/hooks/getCookie"  type="module"></script>
+    <script src="/js/signin" type="module"></script>
+</body>
+</html>

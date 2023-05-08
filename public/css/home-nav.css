@@ -1,0 +1,36 @@
+.home-nav-wrapper{
+    display: flex;
+    background-color: white;
+    justify-content: space-around;
+    height: 1.5rem;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    padding: 0.13rem 0 0 0;
+}
+    .home-nav-part{
+        width: 1.2rem;
+        color: rgb(80, 80, 80);
+        font-size: 0.25rem;
+    }
+    
+        .home-nav-part .home-nav-icon{
+            width: 0.35rem;
+            transition: all 0.3s ease;
+        }
+        
+        .home-nav-part .home-nav-title{
+            margin-top: 0.1rem;
+        }
+
+
+    .home-nav-part-active{
+        width: 1.2rem;
+        color: rgb(80, 80, 80);
+        font-size: 0.25rem;
+    }
+        .home-nav-part-active .home-nav-icon{
+            width: 0.65rem;
+            margin-top: -0.3rem;
+        }

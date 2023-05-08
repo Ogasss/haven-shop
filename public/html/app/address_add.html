@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>Haven 所想好物，这里都有</title>
+    <link rel="stylesheet" href="/css/address_add">
+    <link rel="stylesheet" href="/css/reset">
+</head>
+<body> 
+
+    <header class="indent-header">
+        <div class="indent-header-back-button">
+            <img class="indent-header-back-img" src="/png/right">
+        </div>
+        <div class="indent-header-title-wrapper">
+            <span class="indent-header-title">
+                添加新地址
+            </span>
+        </div>
+        <div class="indent-header-back-button hidden">
+        </div>
+    </header>
+
+    <div class="address-main">
+        <div class="address-main-pad">
+            <label class="address-name-input input-option">
+                <span class="input-word">收货人</span>
+                <input type="text" class="the-input" placeholder="姓名">
+            </label>
+
+            <label class="address-phone-input input-option">
+                <span class="input-word">联系电话</span>
+                <input type="number" maxlength="11" class="the-input" placeholder="电话号码">
+            </label>
+            
+            <label class="address-the-address-input input-option">
+                <span class="input-word">选择地区</span>
+                <div class="the-address-msg">
+                    省、市、区/县
+                </div>
+            </label>
+            
+            <label class="address-more-address-input">
+                <div class="more-address-input-word">详细地址</div>
+                <textarea class="the-more-address-input" placeholder="小区楼栋、门牌号等"></textarea>
+            </label>
+        </div>
+
+        <div class="address-main-pad">
+            <div class="address-tag-chose-input">
+                <div class="chose-input-word">
+                    <span class="chose-input-title">地址标签</span>
+                    
+                </div>
+                <div class="address-tags-wrapper">
+                </div>
+            </div>
+            
+            <div class="address-set-default input-option">
+                <span class="set-defualt-word">设为默认地址</span>
+                <div class="chose-default-button">
+                    <div class="the-ball"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="address-main-submit-wrapper">
+            <div class="address-main-submit-button">
+                添加
+            </div>
+        </div>
+    </div>
+
+    <div class="the-address-action-pad-wrapper">
+        <div class="the-address-action-pad">
+            <div class="the-address-chose-tops">
+                <div class="the-address-chose-option">
+                    省份
+                </div>
+                <div class="the-address-chose-option">
+                    城市
+                </div>
+                <div class="the-address-chose-option">
+                    区县
+                </div>
+            </div>
+            <div class="the-address-options-wrapper">
+                <!-- <div class="the-address-options-wrapper">
+                    <div class="the-address-options">
+                        <div class="the-address-one-active">
+                            测试
+                        </div>
+                        <div class="the-address-one">
+                            测试
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="tag-add-pad-wrapper">
+
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.5/axios.js"></script>
+    <script src="/json/address"></script>
+    <script src="/hooks/getCookie" type="module"></script>
+    <script src="/hooks/theAlert" type="module"></script>
+    <script src="/js/address_add" type="module"></script>
+</body>
+</html>

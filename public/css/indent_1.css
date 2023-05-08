@@ -1,0 +1,364 @@
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+.indent-header{
+    position: sticky;
+    top: 0;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.26rem;
+    background-color: white;
+    z-index: 3;
+}
+    .indent-header .indent-header-back-button{
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+        .indent-header-back-img{
+            max-height: 60%;
+            transform: rotate(180deg);
+        }
+    .hidden{
+        visibility: hidden;
+    }
+
+
+.indent-footer{
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.26rem;
+    background-color: white;
+    z-index: 2;
+}
+    .indent-footer-price-wrapper{
+        display: flex;
+        align-items: end;
+        justify-content: center;
+    }
+        .indent-footer-msg{
+            font-size: 0.2rem;
+            margin-right: 0.26rem;
+        }
+        .indent-footer-unit{
+            font-size: 0.4rem;
+            font-weight: bold;
+        }
+        .indent-footer-price{
+            font-size: 0.4rem;
+            font-weight: bold;
+        }
+
+    .indent-footer-action{
+        display: flex;
+    }
+        .indent-delete-button{
+            border: 1px solid rgb(220, 220, 220);
+            width: 1.2rem;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.26rem;
+        }
+        .indent-delete-img{
+            width: 0.5rem;
+            height: 0.5rem;
+        }
+        .indent-submit-button{
+            border: 1px solid rgb(220, 220, 220);
+            background-color: rgb(000, 205, 205);
+            width: 2rem;
+            height: 1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    .indent-main{
+        margin-bottom: 1.5rem;
+    }
+        .indent-main-tops{
+            position: sticky;
+            top: 1.2rem;
+            height: 0.8rem;
+            border-top: 1px solid rgb(240, 240, 240);
+            margin-bottom: 0.13rem;
+            background-color: white;
+            z-index: 2;
+        }
+            .indent-main-wrapper{
+                padding: 0.13rem;
+            }
+            .indent-main-option{
+                width: 100%;
+                height: 2.5rem;
+                background-color: white;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                padding: 0.13rem;
+                margin-bottom: 0.26rem;
+            }
+            .indent-main-option-img-wrapper{
+                border: 1px solid rgb(180, 180, 180);
+                height: 2rem;
+                width: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 0.13rem;
+            }
+            .indent-main-option-img{
+                max-height: 95%;
+                max-width: 95%;
+            }
+            .indent-main-option-chose{
+                width: 0.6rem;
+                height: 0.6rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.13rem;
+            }
+            .indent-main-option-img{
+                max-height: 95%;
+                max-width: 95%;
+            }
+            .indent-main-option-chose-img{
+                max-height: 95%;
+                max-width: 95%;
+            }
+            .indent-main-top-chose{
+                width: 0.6rem;
+                height: 0.6rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.13rem;
+            }
+            .indent-main-top-img{
+                max-height: 95%;
+                max-width: 95%;
+            }
+            .indent-main-option-msg{
+                width: 45%;
+                height: 2rem;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                margin-right: 0.13rem;
+            }
+                .indent-main-option-title{
+                    font-size: 0.3rem;
+                    color: black;
+                    margin-bottom: 0.13rem;
+                }
+                .indent-main-option-param-wrapper{
+                    font-size: 0.3rem;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 0.13rem;
+                }
+                .indent-main-option-params-wrapper{
+                    display: flex;
+                }
+                    .indent-main-option-params{
+                        border: 1px solid rgb(220, 220, 220);
+                        border-radius: 2px;
+                        padding: 0 0.13rem;
+                        margin-right: 0.13rem;
+                        opacity: 0.8;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .indent-main-option-price{
+                        border: none;
+                        font-size: 0.35rem;
+                        opacity: 1;
+                        font-weight: bold;
+                    }
+            .indent-main-option-number-wrapper{
+                width: 0.8rem;
+                height: 2rem;
+            }
+                .indent-main-option-number-action{
+                    border: 2px solid rgb(220, 220, 220);
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .indent-main-option-number-action:active{
+                    border: 2px solid rgb(150, 150, 150);
+                    height: 30%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .indent-main-option-number{
+                    height: 40%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid rgb(240, 240, 240);
+                }
+    .indent-main-tops{
+        display: flex;
+        align-items: center;
+        padding: 0 0.26rem;
+        width: 100%;
+    }
+    .indent-main-option-text{
+        opacity: 0.8;
+    }
+
+
+    .indent-none-img{
+        max-width: 100vw;
+    }
+
+
+
+
+
+    .item-into-car{
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        bottom: 0;
+        z-index: 3;
+        display: none;
+    }
+    @keyframes enter {
+        0% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        100% {
+            opacity: 100;
+            transform: translateY(0%);
+        }
+    }
+    @keyframes leave {
+        0% {
+            opacity: 0;
+            transform: translateY(100%);
+            opacity: 100;
+            transform: translateY(0%);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    }
+        .item-into-car-pad{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transition: all 0.3s ease;
+            animation: enter 0.3s ease;
+        }
+            .item-into-car-pad .item-into-car-pad-header{
+                padding: 0.26rem;
+                background-color: white;
+                display: flex;
+            }
+                .item-into-car-pad-header .header-img{
+                    border: 1px solid rgb(240, 240, 240);
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    margin-right: 0.26rem;
+                }
+                .item-into-car-pad-header .close-button{
+                    position: absolute;
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    top: 0.26rem;
+                    right: 0.26rem;
+                }
+                    .item-into-car-pad-header .close-button img{
+                        width: 100%;
+                        opacity: 0.8;
+                    }
+                .item-into-car-pad-header .header-title{
+                    display: flex;
+                    align-items: center;
+                    font-weight: bold;
+                }
+                .item-into-car-pad-header .header-msg{
+                    margin-top: 0.13rem;
+                    font-size: 0.3rem;
+                    opacity: 0.6;
+                }
+                .item-into-car-pad-header .header-logo{
+                    width: 0.35rem;
+                    margin-right: 0.13rem;
+                    transform: translateY(1px);
+                }
+            .item-into-car-pad .item-into-car-pad-main{
+                padding: 0.26rem;
+                background-color: rgb(240, 240, 240);
+            }
+
+                .item-into-car-pad-main .main-option-wrapper{
+                    margin-bottom: 0.52rem;
+                }
+                    .main-option-wrapper .main-option-title{
+                        font-size: 0.3rem;
+                        opacity: 0.8;
+                        margin-bottom: 0.13rem;
+                    }
+                    .main-option-wrapper .main-option-list-wrapper{
+                        width: 100%;
+                        overflow: auto;
+                    }
+                    .main-option-wrapper .main-option-list{
+                        width: calc(2rem*4);
+                        display: flex;
+                    }
+                        .main-option-list .main-option{
+                            width: 1.8rem;
+                            height: 1.8rem;
+                            margin-right: 0.2rem;
+                            background-color: white;
+                            display: flex;
+                            border-radius: 0.2rem;
+                            border: 3px solid white;
+                            transition: all 0.3s ease;
+                        }
+                            .main-option .main-option-img{
+                                max-width: 85%;
+                                max-height: 85%;
+                                margin: auto;
+                            }
+                            .main-option .params{
+                                margin: auto;
+                                font-size: 0.8rem;
+                                font-weight: bold;
+                            }
+
+            .item-into-car-pad-footer{
+                padding: 0.26rem;
+                background-color: white;
+            }
+                .item-into-car-pad-footer .submit-button{
+                    width: 100%;
+                    height: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 2px;
+                    color: white;
+                    background-color: rgb(0, 205, 205);
+                }

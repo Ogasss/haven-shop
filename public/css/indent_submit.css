@@ -1,0 +1,382 @@
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+.indent-header{
+    position: sticky;
+    top: 0;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.26rem;
+    background-color: white;
+    z-index: 3;
+}
+    .indent-header .indent-header-back-button{
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+        .indent-header-back-img{
+            max-height: 60%;
+            transform: rotate(180deg);
+        }
+    .hidden{
+        visibility: hidden;
+    }
+
+.indent-main{
+    padding: 0.26rem;
+    padding-bottom: 1.5rem;
+}
+    .indent-main-address-wrapper{
+        background-color: white;
+        border-radius: 2px;
+        padding: 0.26rem 0.26rem 0 0.26rem;
+        overflow: hidden;
+        margin-bottom: 0.26rem;
+    }
+        .indent-main-address-msg{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+            .indent-main-address-msg div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        .indent-main-address-img-wrapper{
+            width: 0.5rem;
+            margin-right: 0.13rem;
+        }
+            .indent-main-address-img{
+                width: 100%;
+                opacity: 0.9;
+            }
+        .indent-main-address-word-wrapper{
+            font-size: 0.3rem;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+        .indent-main-address-right-wrapper{
+            width: 0.3rem;
+        }
+            .indent-main-address-right{
+                width: 100%;
+                opacity: 0.8;
+            }
+        .indent-main-address-img-line-wrapper{
+            margin-left: -0.26rem;
+            height: 0.35rem;
+        }
+
+
+
+
+    .indent-main-indent-option{
+        margin-bottom: 0.26rem;
+    }
+    .indent-main-indent-wrapper{
+        height: 2.5rem;
+        border-radius: 2px 2px 0px 0px;
+        background-color: white;
+        padding: 0.26rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+        .indent-main-indent-row-1{
+            display: flex;
+            height: 2rem;
+            font-size: 0.3rem;
+            align-items: center;
+            position: relative;
+        }
+            
+            .indent-main-indent-img-wrapper{
+                border: 1px solid rgb(220, 220, 220);
+                min-width:2rem;
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                margin-right: 0.13rem;
+            }
+                .indent-main-indent-img{
+                    width: 90%;
+                    margin: auto;
+                }
+            .indent-main-indent-msg-wrapper{
+                height: 1.8rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .indent-main-indent-title-wrapper{
+                opacity: 0.95;
+            }
+                .indent-main-indent-title{
+                    font-size: 0.32rem;
+                }
+            .indent-main-indent-params-wrapper{
+                display: flex;
+                font-size: 0.3rem;
+                opacity: 0.6;
+            }
+                .indent-main-indent-params-wrapper div{
+                    margin-right: 0.13rem;
+                }
+                .indent-main-indent-type{
+                    padding: 0 2px;
+                    border: 1px solid rgb(200, 200, 200);
+                }
+            .indent-main-indent-tags-wrapper{
+                display: flex;
+                flex-wrap: wrap;
+                color: rgb(204, 85, 85);
+                font-size: 0.3rem;
+                opacity: 0.8;
+            }
+                .indent-main-indent-tag{
+                    border: 1px solid rgb(204, 85, 85);
+                    margin-right: 0.13rem;
+                    padding: 0 0.13rem;
+                }
+        .indent-main-indent-old-price-wrapper{
+            position: absolute;
+            min-width: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            right: 0;
+        }
+            .indent-main-indent-old-price{
+                font-weight: bold;
+                font-size: 0.3rem;
+            }
+        .indent-main-indent-discount-price-wrapper{
+            border-bottom: 1px solid rgb(420, 240, 240);
+            padding: 0.13rem 0.26rem;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+        }
+            .indent-main-indent-discount-price-word{
+                opacity: 0.8;
+            }
+            .indent-main-indent-discount-price{
+                font-size: 0.3rem;
+                color: rgb(205, 85, 85);
+                opacity: 0.8;
+            }
+        .indent-main-indent-price-wrapper{
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0px 0px 2px 2px;
+            padding: 0.13rem 0.26rem 0.26rem 0.26rem;
+        }
+            .indent-main-indent-price-word{
+                font-size: 0.3rem;
+                opacity: 0.9;
+            }
+            .indent-main-indent-price{
+                font-size: 0.4rem;
+                font-weight: bold;
+            }
+
+.indent-footer{
+    position: fixed;
+    bottom: 0;
+    height: 1.5rem;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.26rem;
+    font-size: 0.3rem;
+    z-index: 2;
+}
+    .indent-footer-action-button{
+        height: 95%;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(000, 205, 205);
+        color: white;
+        font-size: 0.35rem;
+        border-radius: 2px;
+    }
+    .indent-footer-total-msg-line-2{
+        opacity: 0.8;
+    }
+    .indent-footer-total-msg-line-1-2{
+        color: rgb(250, 65, 100);
+        font-size: 0.45rem;
+        font-weight: bold;
+    }
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 100;
+        transform: translateY(0%);
+    }
+}
+@keyframes leave {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+        opacity: 100;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+
+.indent-chose-address{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
+}
+    .indent-chose-address-pad{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        transition: all 0.3s ease;
+        animation: enter 0.3s ease;
+    }
+    .indent-chose-address-pad-header{
+        height: 1rem;
+        border-radius: 5px 5px 0px 0px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;padding: 0.26rem;
+        border-bottom: 1px solid rgb(240, 240, 240);
+    }
+        .address-pad-header-close-button{
+            width: 0.5rem;
+            height: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+            .address-pad-header-close-img{
+                width: 0.5rem;
+            }
+    
+    .indent-chose-address-pad-main{
+        background-color: rgb(240, 240, 240);
+        padding: 0.26rem;
+        height: calc(0.52rem + 0.26rem + 6rem);
+        overflow: auto;
+    }
+
+    .indent-chose-address-pad-footer{
+        background-color: white;
+        padding: 0.26rem;
+    }
+        .indent-chose-address-pad-button{
+            background-color: rgb(000, 205, 205);
+            height: 0.8rem;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .indent-chose-address-option{
+            border: 2px solid white;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            height: 2rem;
+            padding: 0.26rem;
+            display: flex;
+            font-size: 0.3rem;
+            display: flex;
+            margin-bottom: 0.26rem;
+            transition: all ease 0.3s;
+        }
+        .indent-chose-address-option-active{
+            border: 2px solid rgba(0, 175, 175, 0.4);
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            height: 2rem;
+            padding: 0.26rem;
+            display: flex;
+            font-size: 0.3rem;
+            display: flex;
+            margin-bottom: 0.26rem;
+            transition: all ease 0.3s;
+        }
+            .indent-chose-address-option-img-wrapper{
+                width: 15%;
+                margin-right: 0.13rem;
+            }
+                .option-address-img-wrapper{
+                    border: 1px solid rgb(160, 160, 160);
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                    .indent-chose-address-option-img{
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+
+                    
+            .indent-chose-address-option-msg{
+
+            }
+                .indent-chose-address-option-user-msg{
+                    margin-bottom: 0.13rem;
+                    display: flex;
+                    font-size: 0.35rem;
+                }
+                    .option-user-msg-phone{
+                        margin-right: 0.13rem;
+                    }
+                    .option-hidden-img-wrapper{
+                        display: flex;
+                        align-items: center;
+                        width: 0.3rem;
+                    }
+                        .option-user-msg-name{
+                            font-weight: bold;
+                        }
+                        .option-hidden-img{
+                            width: 0.35rem;
+                            height: 0.35rem;
+                            opacity: 0.8;
+                        }
+                .indent-chose-address-option-address-msg{
+                    
+                }
+                    .option-address-tag{
+                        border: 1px solid rgb(0, 205, 205);
+                        color: rgb(0, 205, 205);
+                        border-radius: 2px;
+                        padding: 0 0.13rem 0 0.26rem;
+                        background-color: rgba(0, 205, 205, 0.1);
+                        margin-right: 0.13rem;
+                    }

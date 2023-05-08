@@ -1,0 +1,177 @@
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+.indent-header{
+    position: sticky;
+    top: 0;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.26rem;
+    background-color: white;
+    z-index: 3;
+}
+    .indent-header .indent-header-back-button{
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+        .indent-header-back-img{
+            max-width: 100%;
+            transform: rotate(180deg);
+        }
+    .hidden{
+        visibility: hidden;
+    }
+
+@keyframes action-enter {
+    0%{
+        transform: translate(100%);
+        
+    }
+    100% {
+        transform: translate(0%);
+    }
+}
+@keyframes action-leave {
+    0% {
+        transform: translate(0%);
+    }
+    100%{
+        transform: translate(100%);
+        
+    }
+}
+
+.indent-main{
+    padding: 0.26rem;
+    padding-bottom: 1.5rem;
+}
+    .the-address-option{
+        position: relative;
+        display: flex;
+        margin-bottom: 0.26rem;
+        overflow: hidden;
+    }
+
+        /* .indent-chose-address-option{
+            position: absolute;
+            border: 2px solid white;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            height: 2rem;
+            padding: 0.26rem;
+            display: flex;
+            font-size: 0.3rem;
+            display: flex;
+            transition: all ease 0.3s;
+            width: calc(100vw - 0.52rem);
+            z-index: 3;
+        } */
+        .indent-chose-address-option-active{
+            border: 2px solid white;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            height: 2rem;
+            padding: 0.26rem;
+            display: flex;
+            font-size: 0.3rem;
+            display: flex;
+            transition: all ease 0.3s;
+        }
+            .indent-chose-address-option-img-wrapper{
+                width: 15%;
+                margin-right: 0.13rem;
+            }
+                .option-address-img-wrapper{
+                    border: 1px solid rgb(160, 160, 160);
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                    .indent-chose-address-option-img{
+                        width: 0.5rem;
+                        height: 0.5rem;
+                    }
+
+                    
+            .indent-chose-address-option-msg{
+
+            }
+                .indent-chose-address-option-user-msg{
+                    margin-bottom: 0.13rem;
+                    display: flex;
+                    font-size: 0.35rem;
+                }
+                    .option-user-msg-phone{
+                        margin-right: 0.13rem;
+                    }
+                    .option-hidden-img-wrapper{
+                        display: flex;
+                        align-items: center;
+                        width: 0.3rem;
+                    }
+                        .option-user-msg-name{
+                            font-weight: bold;
+                        }
+                        .option-hidden-img{
+                            width: 0.35rem;
+                            height: 0.35rem;
+                            opacity: 0.8;
+                        }
+                .indent-chose-address-option-address-msg{
+                    
+                }
+                    .option-address-tag{
+                        border: 1px solid rgb(0, 205, 205);
+                        color: rgb(0, 205, 205);
+                        border-radius: 2px;
+                        padding: 0 0.13rem 0 0.26rem;
+                        background-color: rgba(0, 205, 205, 0.1);
+                        margin-right: 0.13rem;
+                    }
+        
+        .option-address-action-pad{
+            border-left: 2px solid rgb(0, 205, 205);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.13rem 0.26rem;
+            justify-content: space-between;
+            background-color: white;
+            z-index: 1;
+            animation: action-enter 0.3s ease; 
+        }
+            .option-address-action-button{
+                border: 1px solid rgb(220, 220, 220);
+                color: rgb(80, 80, 80);
+                font-size: 0.3rem;
+                padding: 0.13rem;
+            }
+
+.indent-address-add{
+    position: fixed;
+    bottom: 0.52rem;
+    right: 0.26rem;
+    background-color: rgb(0, 205, 205);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    color: white;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+    .indent-address-add img{
+        width: 60%;
+    }

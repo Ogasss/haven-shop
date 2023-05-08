@@ -1,0 +1,136 @@
+.signin-wrapper{
+    
+    font-size: 0.3rem;
+    padding: 0.26rem;
+}
+
+.signin-back-button{
+    height: 0.6rem;
+}
+    .signin-back-button .signin-left-button{
+        transform: rotate(180deg);
+        width: 3vh;
+    }
+
+.signin-title{
+    
+    font-size: 0.5rem;
+    opacity: .75;
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+}
+
+.signin-warn-msg{
+    color: rgb(65, 160, 165);
+    height: em;
+}
+
+.signin-username{
+    border-bottom: 1px solid rgb(240, 240, 240);
+    display: flex;
+    height: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.signin-username:active{
+    border-bottom: 1px solid rgb(65, 160, 165);
+}
+    .signin-username .signin-username-chose{
+        
+        width: 15%;
+        margin-right: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }  
+        .signin-username-chose .signin-down-button{
+            transform:  rotate(90deg);
+            
+            width: 0.3rem;
+        }
+    .signin-username .signin-username-input{
+        width: 80%;
+        transition: all 0.3s ease;
+    }
+    .signin-username-input:focus{
+        font-size: 0.55rem;
+    }
+
+.signin-password{
+    border-bottom: 1px solid rgb(240, 240, 240);
+    display: flex;
+    height: 0.8rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+    .signin-password:active{
+        border-bottom: 1px solid rgb(65, 160, 165);
+    }
+    .signin-password .signin-password-eye{
+        
+        height: 0.4rem;
+    }
+    .signin-password .signin-password-input{
+        width: 80%;
+        transition: all 0.3s ease;
+    }
+    .signin-password-input:focus{
+        font-size: 0.55rem;
+    }
+
+.signin-submit-button{
+    background-color: rgb(65, 160, 165);
+    color: white;
+    font-size: 0.4rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.signin-turn-change{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+}
+
+.signin-other-methods {
+    margin-top: 3rem;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+    .signin-other-methods button{
+        
+    }
+        .signin-other-methods button img{
+            width: 0.8rem;
+            opacity: 0.7;
+        }
+
+
+.signin-change{
+    animation: change 0.6s ease;
+}
+@keyframes change {
+    0%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    30%{
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}

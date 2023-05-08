@@ -1,0 +1,278 @@
+body{
+    background-color: rgb(240, 240, 240);
+}
+
+.indent-header{
+    position: sticky;
+    top: 0;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.26rem;
+    background-color: white;
+    z-index: 3;
+}
+    .indent-header .indent-header-back-button{
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+        .indent-header-back-img{
+            max-width: 100%;
+            transform: rotate(180deg);
+        }
+    .hidden{
+        visibility: hidden;
+    }
+
+.address-main{
+}
+    .address-main-pad{
+        background-color: white;
+        padding: 0 0.26rem;
+        margin-bottom: 0.26rem;
+        opacity: 0.9;
+    }
+        .input-option{
+            border-bottom: 1px solid rgb(240, 240, 240);
+            width: 100%;
+            height: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .input-word{
+            width: 25%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin-right: 0.26rem;
+        }
+        .address-more-address-input{
+            height: 2rem;
+            display: flex;
+        }
+            .the-input{
+                height: 100%;
+                width: 70%;
+                font-size: 0.3rem;
+                opacity: 0.6;
+                transform: translateY(2px);
+                transition: all 0.1s ease;
+            }
+            .the-address-msg{
+                font-size: 0.3rem;
+                opacity: 0.6;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .the-input:focus{
+                font-size: 0.4rem;
+                opacity: 1;
+                color: black;
+            }
+                .more-address-input-word{
+                    width: 25%;
+                    margin: 0.26rem 0;
+                }
+                .the-more-address-input{
+                    margin: auto;
+                    border: none;
+                    height: 80%;
+                    width: 70%;
+                    opacity: 0.6;
+                    font-size: 0.3rem;
+                    transition: all 0.1s ease;
+                }
+                .the-more-address-input:focus{
+                    opacity: 1;
+                    color: black;
+                }
+        .address-tag-chose-input{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.26rem 0;
+            border-bottom: 1px solid rgb(240, 240, 240);
+        }
+            .chose-input-word{
+                margin-bottom: 0.26rem;
+                display: flex;
+            }
+                .chose-input-title{
+                    margin-right: 0.13rem;
+                }
+
+            .address-tags-wrapper{
+                display: flex;
+            }
+            .address-tags-wrapper{
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .address-tag{
+                border: 1px solid rgb(220, 220, 220);
+                color:rgb(120, 120, 120);
+                padding: 0 0.26rem;
+                margin-right: 0.13rem;
+                border-radius: 2px;
+                margin-bottom: 0.13rem;
+            }
+            .address-tag-active{
+                border: 1px solid rgba(0, 205, 205, 0.6);
+                color: rgb(0, 205, 205);
+                padding: 0 0.26rem;
+                margin-right: 0.13rem;
+                border-radius: 2px;
+                margin-bottom: 0.13rem;
+            }
+
+        .address-set-default{
+            padding: 0.26rem 0;
+            justify-content: space-between;
+        }
+            .chose-default-button{
+                border: 1px solid rgb(220, 220, 220);
+                border-radius: 50px;
+                width: 1rem;
+                transition: all ease 0.3;
+                background-color: white;
+                transition: all ease 0.3s;
+            }
+                .chose-default-button .the-ball{
+                    border: 1px solid rgb(220, 220, 220);
+                    border-radius: 50%;
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    transition: all ease 0.3s;
+                    background-color: white;
+                }
+            .chose-default-button-active{
+                border: 1px solid rgb(220, 220, 220);
+                border-radius: 50px;
+                width: 1rem;
+                transition: all ease 0.3;
+                background-color: rgba(0, 205, 205);
+                transition: all ease 0.3s;
+            }
+                .chose-default-button-active .the-ball{
+                    border: 1px solid rgb(220, 220, 220);
+                    border-radius: 50%;
+                    width: 0.5rem;
+                    height: 0.5rem;
+                    background-color: white;
+                    transition: all ease 0.3s;
+                    transform: translate(0.5rem);
+                }
+    .address-main-submit-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0 0.26rem;
+        font-size: 0.35rem;
+        margin-bottom: 0.26rem;
+    }
+    .address-main-submit-button{
+       width: 100%;
+       border-radius: 0.5px;
+       height: 1rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: white;
+       background-color: rgb(0, 205, 205);
+    }
+
+@keyframes pad-enter {
+    0%{
+        transform: translateY(100%);
+    }   
+    100%{
+        transform: translateY(0%);
+    }
+}
+@keyframes pad-leave {
+    0%{
+        transform: translateY(0%);
+    }   
+    100%{
+        transform: translateY(100%);
+    }
+}
+
+.the-address-action-pad-wrapper{
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+    .the-address-action-pad{
+        position: fixed;
+        bottom: 0;
+        padding: 0.26rem;
+        width: 100vw;
+        background-color: white;
+        animation: pad-enter 0.3s ease;
+
+    }
+        .the-address-chose-tops{
+            border-bottom: 1px solid rgb(240, 240, 240);
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.26rem;
+        }
+            .the-address-options-wrapper{
+                border-left: 1px solid rgb(240, 240, 240);
+                height: 8rem;
+                overflow: auto;
+            }
+                .the-address-options{
+                    width: calc((100vw - 0.52rem) / 3);
+                    height: 12rem;
+                    padding: 0 0.13rem;
+                }
+                    .the-address-one{
+                        font-size: 0.3rem;
+                        display: flex;
+                        align-items: center;
+                        width: 3rem;
+                        height: 0.8rem;
+                        transition: all ease 0.3s;
+                    }
+                    .the-address-one-active{
+                        font-size: 0.4rem;
+                        font-weight: bold;
+                        transition: all ease 0.3s;
+                    }
+                
+            .the-address-chose-option{
+                opacity: 0.7;
+                margin-right: 0.26rem;
+                border-bottom: 2px solid white;
+                width: calc((100vw - 0.52rem) / 3);
+                padding-left: 0.13rem;
+                padding-bottom: 0.13rem;
+                transition: all 0.3s ease;
+            }
+            .the-address-chose-option-active{
+                opacity: 1;
+                border-bottom: 2px solid rgb(0, 205, 205);
+                width: calc((100vw - 0.52rem) / 3);
+                padding-left: 0.13rem;
+                padding-bottom: 0.13rem;
+                margin-right: 0.26rem;
+                transition: all 0.3s ease;
+            }
+
+            .address-tag-input{
+                transform: translateY(-2px);
+                width: 1.2rem;
+                font-size: 0.3rem;
+                color: rgba(0, 0, 0, 0.7);
+            }

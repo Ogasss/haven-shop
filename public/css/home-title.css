@@ -1,0 +1,62 @@
+.home-title-wrapper{
+    position: relative;
+    color: rgb(35, 35, 35);
+    height: 8vh;
+    width: 100%;
+    padding: 0.26rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+    .home-title-wrapper-logoPart{
+        display: flex;
+        align-items: center;
+    }
+
+        .home-title-logo-wrapper{
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+            .home-title-logo-wrapper .home-title-logo{
+                width: 0.25rem;
+            }
+
+
+        .home-title-title-wrapper{
+            margin-left: 0.18rem;
+            display: flex;
+            align-items: center;
+        }
+            .home-title-title-wrapper .home-title-title{
+                /* font-size: 2.5vh; */
+                font-size: 0.4rem;
+                font-weight: 800;
+            }
+
+            .home-title-title-wrapper .home-title-right{
+                margin-top: 0.05rem;
+                height: 2.5vh;
+            }
+
+
+    .home-title-signin-wrapper{
+        margin-top: 0.15rem;
+        height: 0.35rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgb(55, 155, 140);
+        font-weight: 900;
+    }
+        .home-title-signin-wrapper .home-title-signin{
+            width: 0.45rem;
+        }

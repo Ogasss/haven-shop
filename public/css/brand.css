@@ -1,0 +1,35 @@
+.brand-header{
+    height: 5rem;
+}
+    .brand-header .brand-header-top{
+        height: 1rem;
+        padding: 0.26rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+        .brand-header-top .brand-header-top-back{
+            transform: rotate(180deg);
+            width: 0.3rem;
+        }
+        .brand-header-top .brand-header-top-title{
+            font-weight: 800;
+        }
+    .brand-header .brand-header-wrapper{
+        height: 4rem;
+        width: 100vw;
+        overflow: auto;
+    }
+
+        .brand-header .brand-header-option-wrapper{
+            height: 4rem;
+            display: flex;
+            padding: 0 0.13rem 0 0.26rem;
+            width: calc(5*3.13rem);
+        }
+            .brand-header .brand-header-option{
+                border: 1px solid green;
+                width: 3rem;
+                height: 4rem;
+                margin-right: 0.13rem;
+            }

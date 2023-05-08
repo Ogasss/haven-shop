@@ -1,0 +1,157 @@
+.my-wrapper{
+    height: 100vh;
+    background: rgb(240, 240, 240);
+    padding: 0.26rem;
+}
+    .my-wrapper .my-header-wrapper{
+        border-radius: 0.2rem;
+        padding: 0.26rem  0.26rem ;
+        display: flex;
+        background-color: white;
+    }
+        .my-header-wrapper .my-profile-image{
+            border-radius: 50%;
+            height: 1.6rem;
+            background-color: rgb(240, 240, 240);
+        }
+        .my-header-wrapper .my-header-words{
+            margin-left: 0.26rem;
+        }
+            .my-header-wrapper .my-other-name{
+                margin: 0.13rem 0;
+                font-size: 0.5rem;
+            }
+            .my-header-wrapper .my-signature-text{
+                font-size: 0.3rem;
+                opacity: 0.8;
+            }
+            .my-header-wrapper .my-header-leave{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+                .my-header-leave-wrapper{
+                    display: flex;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .my-header-leave .my-header-leave-img{
+                    width: 0.35rem;
+                    height: 0.35rem;
+                    opacity: 0.7;
+                }
+                .my-header-leave .my-header-leave-word{
+                    font-size: 0.4rem;
+                    font-weight: 600;
+                    color: rgb(100, 100, 100);
+                }
+
+    .my-interactive-wrapper{
+        margin-top: 0.26rem;
+        border-radius: 0.2rem;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        height: 1.25rem;
+        padding: 0 0.26rem;
+    }
+        .my-interactive-wrapper .my-interactive-option{
+            display: flex;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+            .my-interactive-option .my-interactive-img{
+                width: 0.5rem;
+                margin-right: 0.13rem;
+            }
+            .my-interactive-option .my-interactive-text{
+                font-size: 0.35rem;
+                font-weight: 800;
+                color: rgb(100, 100, 100);
+            }
+
+
+    .my-wrapper .my-indent-wrapper{
+        background-color: white;
+        margin: 0.26rem 0;
+        border-radius: 0.2rem;
+        display: flex;
+        flex-direction: column;
+        padding: 0.26rem 0.26rem;
+    }
+        .my-indent-wrapper .my-indent-header{
+            margin-bottom: 0.26rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+            .my-indent-header .my-indent-title{
+                font-size: 0.35rem;
+                font-weight: 800;
+                color: rgb(100, 100, 100);
+            }
+        .my-indent-wrapper .my-indent-options{
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+            .my-indent-options .my-indent-option-wrapper{
+                border-radius: 5px;
+                width: 1.2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+                .my-indent-option-wrapper .my-indent-img{
+                    width: 0.55rem;
+                }
+                .my-indent-option-wrapper .my-indent-text{
+                    margin-top: 0.26rem;
+                    font-size: 0.2rem;
+                    font-weight: 800;
+                    color: rgb(100, 100, 100);
+                }
+    
+    .my-wrapper .my-action-wrapper{
+        background-color: white;
+        margin: 0.26rem 0;
+        border-radius: 0.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.26rem 0.26rem;
+
+    }
+        .action-option{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .action-img-wrapper{
+            width: 0.5rem;
+            height: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgb(180, 180, 180);
+            border-radius: 50%;
+            margin-right: 0.13rem;
+        }
+            .action-img-wrapper #address{
+                opacity: 0.85; 
+            }
+        .action-option img{
+            width: 0.3rem;
+            height: 0.3rem;
+        }
+        .action-option span{
+            font-size: 0.35rem;
+            font-weight: bold;
+            opacity: 0.85;
+        }

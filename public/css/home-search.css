@@ -1,0 +1,57 @@
+#home-search{
+    position: sticky;
+    top: 0vh;
+    height: 7vh;
+    background-color: white;
+    z-index: 2;
+    width: 100%;
+    padding-top: 2vh;
+    margin-top: -2vh;
+}
+.home-search-wrapper{
+    width: 100%;
+    padding: 0vh 0.26rem;
+    
+}
+    .home-search-wrapper .home-search-part{
+        height: 5vh;
+        display: flex;
+        border-radius: 5px;
+        background-color: rgb(245, 245, 260);
+        align-items: center;
+        justify-content: space-between;
+        padding: 0vh 0.26rem;
+    }
+        .home-search-part .home-search-left{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            .home-search-left .home-search-input{
+                margin-left: 10px;
+            }
+        .home-search-wrapper .home-search-icon{
+            width: 0.35rem;
+            height: 0.35rem;
+        }
+        .home-search-wrapper .home-search-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            .home-search-right .home-search-line {
+                height: 0.2rem;
+                border-right: 1px solid gray;
+                margin: 0px 10px
+            }
+
+            .home-search-right .home-search-word{
+                color: rgb(85, 85, 85);
+                font-size: 0.3rem;
+                font-weight: 600;
+            }
+
+            .home-search-right .home-search-camera{
+                width: 0.5rem;
+                height: 0.5rem;
+            }
