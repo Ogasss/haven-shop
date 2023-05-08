@@ -19,7 +19,7 @@ import { getCookie } from "../hooks/getCookie"
             name: 'car',
             word: '小车',
             png: '/png/car',
-            href: `${ havenToken!==undefined&&havenUid !==undefined ? '../../app/indent_1' : '../../app/signin' }`
+            href: `${ havenToken!==undefined&&havenUid !==undefined ? '../../app/indent?status=1' : '../../app/signin' }`
         },
         {
             name: 'my',

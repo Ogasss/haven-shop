@@ -356,7 +356,7 @@ getIndentList().then((indentList)=>{
                             sessionStorage.removeItem('choseIndentList')
                             if(confirm('确定支付')){
                                 theAlert('支付成功').then(()=>{
-                                    location.href = '/app/indent_3'
+                                    location.href = '/app/indent?status=3'
                                 })
                             }
                         }

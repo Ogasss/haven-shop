@@ -1,31 +1,3 @@
-body{
-    background-color: rgb(240, 240, 240);
-}
-
-.indent-header{
-    position: sticky;
-    top: 0;
-    height: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.26rem;
-    background-color: white;
-    z-index: 3;
-}
-    .indent-header .indent-header-back-button{
-        width: 0.5rem;
-        height: 0.5rem;
-    }
-        .indent-header-back-img{
-            max-height: 60%;
-            transform: rotate(180deg);
-        }
-    .hidden{
-        visibility: hidden;
-    }
-
-
 .indent-footer{
     position: fixed;
     width: 100vw;
