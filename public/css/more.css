@@ -52,7 +52,11 @@
             transition: all ease 0.3s;
             visibility: hidden;
         }
-
+.more-main-content{
+}
+.more-main-content .indent-none-img{
+    height: 82vh;
+}
 .more-main-content-option{
     width: 100%;
     display: flex;

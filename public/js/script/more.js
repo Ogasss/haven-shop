@@ -2,11 +2,10 @@ import { sendRequest } from '../hooks/sendRequest'
 
 const theKey = window.location.href.split('?')[1].split('=')[0]
 const theType = decodeURIComponent(window.location.href.split('?')[1].split('=')[1])
-console.log(theKey,theType)
 
 const backButton = document.getElementsByClassName('more-back-button')[0]
 backButton.addEventListener('click',()=>{
-    history.go(-1)
+    location.href = '/app/search'
 })
 
 const itemListInit = async () => {
@@ -54,25 +53,42 @@ const itemListInit = async () => {
         itemList = theItemResponse.data
     }else{
         document.getElementsByClassName('more-header-title')[0].innerText = theType
-        if(theType.length > 1){
+        
+        if(theType.length <= 1){
+            let response = await sendRequest(
+                'POST',
+                '/item/get',
+                {
+                    condition: `direction LIKE '%${theType}%'`
+                }
+            )
+            itemList = response.data
+        }else{
             let splitArr = []
-            if(theType.length<6){
-                for(let i=0; i<theType.length; i++){
-                    for(let j=i+1; j<=theType.length; j++){
-                        const sliceStr = theType.slice(i,j);
-                        splitArr.push(sliceStr);
-                    }
+
+            for(let i=0; i<theType.length; i++){
+                for(let j=i+1; j<=theType.length; j++){
+                    const sliceStr = theType.slice(i,j);
+                    splitArr.push(sliceStr);
                 }
             }
 
-            splitArr = splitArr.filter((item)=>{
-                return item.length > 1
-            })
+            if(theType.length >2){
+                splitArr = splitArr.filter((item)=>{
+                    return item.length > 1
+                })
+            }
+
+           if(splitArr.indexOf('色') !== -1){
+                const index = splitArr.indexOf('色')
+                splitArr.splice(index,1)
+            }
 
             splitArr.sort((a, b)=>{
                 return a.length - b.length
             })
 
+            console.log(splitArr)
             const getItemList = async () =>{
                 let promises = []
                 splitArr.forEach((item)=>{
@@ -101,15 +117,6 @@ const itemListInit = async () => {
                 return items.find((item) => item.id === id)
             })
             itemList = newItems
-        }else{
-            let response = await sendRequest(
-                'POST',
-                '/item/get',
-                {
-                    condition: `direction LIKE '%${theType}%'`
-                }
-            )
-            itemList = response.data
         }
     }
 
@@ -162,11 +169,20 @@ const itemListInit = async () => {
             </a>
         </div>
         `
+        
         itemList.forEach((item) => {
             itemHTML += itemTemplate(item)
         })
         const itemListWrapper = document.getElementsByClassName('more-main-content-option')[0]
-        itemListWrapper.innerHTML = itemHTML
+        if(itemList.length === 0){
+            const wrapper = document.getElementsByClassName('more-main-content')[0]
+            wrapper.style.marginLeft = '-30vh'
+            wrapper.innerHTML = `
+            <img class="indent-none-img" src="/png/indent_none">
+            `
+        }else{
+            itemListWrapper.innerHTML = itemHTML
+        }
     }
     renderItemList(itemList)
 
