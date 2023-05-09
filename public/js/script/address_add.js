@@ -344,6 +344,12 @@ const init = async ()=>{
     const submitButton = document.getElementsByClassName('address-main-submit-button')[0]
     submitButton.addEventListener('click', ()=>{
         const verifyResponse = verifyForm()
+        const nameInput = document.getElementsByClassName('the-input')[0]
+        const phoneInput = document.getElementsByClassName('the-input')[1]
+        const moreAddressInput = document.getElementsByClassName('the-more-address-input')[0]
+        let name = nameInput.value
+        let phone = phoneInput.value
+        let moreAddress = moreAddressInput.value
         const {error} = verifyResponse
         if(error.length ===0){
             let newAddress = `${tag}:${theAddress}/${moreAddress}-${name}-${phone}`
