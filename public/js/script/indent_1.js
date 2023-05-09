@@ -1,6 +1,6 @@
 import { sendRequest } from '../hooks/sendRequest'
 import { getCookie } from '../hooks/getCookie'
-
+import { theConfirm } from '../hooks/theConfirm'
 
 let status = 1
 
@@ -453,20 +453,23 @@ const init = () => {
             }
         })
         if(flag === true) {
-            if(confirm(string)){
-                let body = JSON.stringify(choseIndentList)
-                sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentList:body
-                    }
-                ).then((response)=>{
-                    setTimeout(() => {
-                        history.go(0)
-                    }, 0);
-                })
-            }
+            theConfirm(string, 
+                ()=>{
+                    let body = JSON.stringify(choseIndentList)
+                    sendRequest(
+                        'POST',
+                        '/indent/update',
+                        {
+                            indentList:body
+                        }
+                    ).then((response)=>{
+                        setTimeout(() => {
+                            history.go(0)
+                        }, 0);
+                    })
+                }   
+            )
+            
         }else if(flag === '进入结算'){
             let value = JSON.stringify(choseIndentList)
             sessionStorage.setItem('choseIndentList', value)

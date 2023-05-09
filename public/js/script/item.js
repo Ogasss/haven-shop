@@ -1,5 +1,6 @@
 import { sendRequest } from '../hooks/sendRequest'
 import { getCookie } from '../hooks/getCookie'
+import { theAlert } from '../hooks/theAlert'
 
 const init = async () =>{
     const backButton = document.getElementsByClassName('item-back-button')[0]
@@ -359,6 +360,7 @@ const init = async () =>{
                     indent
                 ).then(()=>{
                     closeButton.click()
+                    theAlert('已成功加入购物车')
                 })
             }else{
                 indent.status = 2

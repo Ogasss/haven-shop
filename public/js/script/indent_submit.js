@@ -1,6 +1,7 @@
 import { sendRequest } from '../hooks/sendRequest'
-import { theAlert } from '../hooks/theAlert'
 import { Timer } from '../hooks/timer'
+import { theAlert } from '../hooks/theAlert'
+import { theConfirm } from '../hooks/theConfirm'
 
 const getNowTime = () => {
     const {year,month,day,hour,minute,second} = Timer.newTimer().format().date
@@ -179,7 +180,12 @@ getIndentList().then((indentList)=>{
             return newItem
         })
         choseAddress = addressList[0]
-        let addressText = `${choseAddress.tag}-${choseAddress.address.replace('/','')}`
+        let addressText
+        if(choseAddress.tag === ''){
+            addressText = `${choseAddress.address.replace('/','')}`
+        }else{
+            addressText = `${choseAddress.tag}-${choseAddress.address.replace('/','')}`
+        }
         addressTextWrapper.innerText = addressText.length > 17 ? addressText.slice(0,17)+'...' : addressText
         addressImg.src = 
         choseAddress.tag === '家'   ? '/png/home' :
@@ -340,67 +346,70 @@ getIndentList().then((indentList)=>{
         if(address === undefined || address === null || address === ''){
             theAlert('您还没有填写收货地址')
         }else{
-            indentList.forEach(async (item, index, arr)=>{
-                await sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentId: item.id,
-                        assign: `status = 3`
-                    }
-                )
-                const get_address = `${choseAddress.tag}:${choseAddress.address}-${choseAddress.name}-${choseAddress.phone}`
-                await sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentId: item.id,
-                        assign: `get_address = '${get_address}'`
-                    }
-                )
-                const send_address = `:/好物库存中心--`
-                await sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentId: item.id,
-                        assign: `send_address = '${send_address}'`
-                    }
-                )
-                await sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentId: item.id,
-                        assign: `now_address = '${send_address}'`
-                    }
-                )
-                await sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentId: item.id,
-                        assign: `target_address = '${send_address}'`
-                    }
-                )
-                const nowTime = getNowTime()
-                await sendRequest(
-                    'POST',
-                    '/indent/update',
-                    {
-                        indentId: item.id,
-                        assign: `buy_time = '${nowTime}'`
-                    }
-                )
-                if(index === arr.length-1){
-                    sessionStorage.removeItem('choseIndentList')
-                    if(confirm('确定支付')){
-                        theAlert('支付成功').then(()=>{
-                            location.href = '/app/indent?status=3'
-                        })
-                    }
+            theConfirm('确定支付？',
+                ()=>{
+                    indentList.forEach(async (item, index, arr)=>{
+                        await sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: item.id,
+                                assign: `status = 3`
+                            }
+                        )
+                        const get_address = `${choseAddress.tag}:${choseAddress.address}-${choseAddress.name}-${choseAddress.phone}`
+                        await sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: item.id,
+                                assign: `get_address = '${get_address}'`
+                            }
+                        )
+                        const send_address = `:/好物库存中心--`
+                        await sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: item.id,
+                                assign: `send_address = '${send_address}'`
+                            }
+                        )
+                        await sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: item.id,
+                                assign: `now_address = '${send_address}'`
+                            }
+                        )
+                        await sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: item.id,
+                                assign: `target_address = '${send_address}'`
+                            }
+                        )
+                        const nowTime = getNowTime()
+                        await sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: item.id,
+                                assign: `buy_time = '${nowTime}'`
+                            }
+                        )
+                        if(index === arr.length-1){
+                            theAlert('下单成功',()=>{
+                                sessionStorage.removeItem('choseIndentList')
+                                location.href = '/app/indent?status=3'
+                            })
+                        }
+                    })
                 }
-            })
+            )
+            
         }
     })
 })

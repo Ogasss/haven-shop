@@ -185,22 +185,6 @@ body{
         transform: rotate(-90deg);
     }
 
-@keyframes tip-enter {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-@keyframes tip-leave {
-    0%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
-}
 .the-alert-wrapper{
     position: fixed;
     top: 0;
@@ -209,21 +193,78 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
     animation: tip-enter 0.3s ease;
     padding-bottom: 30%;
     z-index: 4;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: none;
 }
     .the-alert-pad{
         width: 5rem;
         height: 2.5rem;
-        background-color: white;
-        border-radius: 2px;
+        background-color: rgba(255, 255, 255);
+        border-radius: 0.3rem;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.4rem;
         color: rgba(0, 0, 0, 0.6);
         animation: tip-enter 0.3s ease;
+        color: rgb(140, 140, 140);
     }
 
+    .the-confirm-wrapper{
+        position: fixed;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.2);
+        animation: tip-enter 0.3s ease;
+        padding-bottom: 30%;
+        z-index: 4;
+        display: none;
+    }
+    
+        .the-confirm-pad{
+            width: 6rem;
+            height: 3.2rem;
+            background-color: white;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.4rem;
+            color: rgba(0, 0, 0, 0.6);
+            animation: tip-enter 0.3s ease;
+        }
+        .the-confirm-action-wrapper{
+            margin-top: 0.52rem;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+            .the-confirm-cancel-button{
+                border: 1px solid rgb(220, 220, 220);
+                color: rgb(120, 120, 120);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 2px;
+                width: 1.5rem;
+                height: 0.8rem;
+            }
+            .the-confirm-confirm-button{
+                border: 1px solid rgb(0, 205, 205);
+                background-color: rgb(0, 205, 205);
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 2px;
+                width: 1.5rem;
+                height: 0.8rem;
+            }

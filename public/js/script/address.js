@@ -1,6 +1,6 @@
 import { sendRequest } from '../hooks/sendRequest'
 import { getCookie } from '../hooks/getCookie'
-
+import { theConfirm } from '../hooks/theConfirm'
 
 
 const init = async () => {
@@ -184,13 +184,14 @@ const init = async () => {
                 location.href = '/app/address_add?status=update'
             })
         })
-
+        
         actionDeleteAddress.forEach((item, index)=>{
             item.addEventListener('click', ()=>{
-                if(confirm('确定要删除该地址吗？')){
+                
+               theConfirm('确定要删除该地址？',()=>{
                     addressList.splice(index, 1)[0]
                     addressListRender(addressList)
-                }
+               })
             })
         })
     }

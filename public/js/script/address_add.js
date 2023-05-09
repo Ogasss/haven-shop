@@ -1,6 +1,5 @@
 import { sendRequest } from '../hooks/sendRequest'
 import { getCookie } from '../hooks/getCookie'
-import { theAlert } from '../hooks/theAlert'
 
 const init = async ()=>{
     let choseAddress = JSON.parse(sessionStorage.getItem('choseAddress'))

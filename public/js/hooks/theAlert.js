@@ -1,24 +1,16 @@
-export const theAlert = (string) => {
-    return new Promise((resolve)=>{
-        console.log('提示')
-        const body = document.getElementsByTagName('body')[0]
-        body.innerHTML += 
-        `
-        <div class="the-alert-wrapper">
-            <div class="the-alert-pad">
-                ${string}
-            </div>
-        </div>
-        `
-        const alertWrapper = body.getElementsByClassName('the-alert-wrapper')[0]
-        alertWrapper.addEventListener('click',()=>{
-            alertWrapper.style.animation = 'tip-leave 0.3s ease'
-            setTimeout(()=>{
-                alertWrapper.style.display = 'none'
-                alertWrapper.style.animation = 'tip-enter 0.3s ease'
-                resolve()
-            },250)
-        })  
-    })
-    
+export const theAlert = (string, fun) => {
+    const wrapper = document.getElementsByClassName('the-alert-wrapper')[0]
+    wrapper.style.display = 'flex'
+    const pad = wrapper.getElementsByClassName('the-alert-pad')[0]
+    pad.innerText = string
+    wrapper.addEventListener('click',()=>{
+        wrapper.style.animation = 'tip-leave 0.3s ease'
+        setTimeout(()=>{
+            wrapper.style.display = 'none'
+            wrapper.style.animation = 'tip-enter 0.3s ease'
+            if(fun !== undefined){
+                fun()
+            }
+        },250)
+    })  
 }
