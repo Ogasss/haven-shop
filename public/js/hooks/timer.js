@@ -1,4 +1,4 @@
-const Timer =  {
+export const Timer =  {
     date: Date,
     newTimer: function(){
         if(arguments.length === 0){
@@ -146,6 +146,7 @@ const Timer =  {
             return betweenDays + 1
         }
     },
+
     turnToBeiJingDate(string){
         const date = new Date(string)
         const beiJingOffset = 8*60
@@ -154,5 +155,3 @@ const Timer =  {
         return beiJingDate
     }
 }
-
-exports.Timer = Timer

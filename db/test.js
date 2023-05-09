@@ -1,11 +1,19 @@
 const { dbOpen } = require('./connect')
+const { Timer } = require('../node/hooks/timer')
 
 const test = () => {
-    // const action = dbOpen('haven')
-    // action.create({
-    //     sheet: 'indentList',
-    //     header: ['item_id','number','more_type_0','more_type_1','from_user','status','want_time','buy_time'],
-    //     value: [1, 1, '黑色', 'M', 1, 1, null, null]
+    let action
+    action = dbOpen('haven')
+    action.delete({
+        sheet: 'indentList',
+        condition: `status = 0`
+    })
+    // action = dbOpen('haven')
+    // action.read({
+    //     sheet: 'itemList',
+    //     condition: `direction LIKE '%T恤%'`
+    // }).then((data)=>{
+    //     console.log(data)
     // })
 }
 

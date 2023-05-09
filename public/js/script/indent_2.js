@@ -10,7 +10,7 @@ const init = () => {
     const init = async () =>{
         const {havenUid} = getCookie()
         if(havenUid === undefined){
-            Location.href = '../../'
+            location.href = '../../'
         }
         const response = await sendRequest(
             'POST',
@@ -77,7 +77,7 @@ const init = () => {
         
         const indentTemplate = (item) => {
             return `
-            <div class="indent-main-indent-option">
+        <div class="indent-main-indent-option">
             <div class="indent-main-indent-wrapper">
                 <div class="indent-main-indent-row-1">
                     <div class="indent-main-indent-img-wrapper">
@@ -180,9 +180,8 @@ const init = () => {
             })
 
             const actionSubmit = (status, index) => {
-                if(status === 1){
-                    if(confirm('确定取消付款？商品将返回至购物车')){
-                        console.log('执行')
+                if(status === 0){
+                    if(confirm('确定取消付款？')){
                         sendRequest(
                             'POST',
                             '/indent/merge',
@@ -220,7 +219,7 @@ const init = () => {
             
             cancelButtonList.forEach((item, index)=>{
                 item.addEventListener('click', ()=>{
-                    actionSubmit(1, index)
+                    actionSubmit(0, index)
                 })
             })
 

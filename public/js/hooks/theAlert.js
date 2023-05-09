@@ -1,5 +1,6 @@
 export const theAlert = (string) => {
     return new Promise((resolve)=>{
+        console.log('提示')
         const body = document.getElementsByTagName('body')[0]
         body.innerHTML += 
         `
@@ -15,7 +16,6 @@ export const theAlert = (string) => {
             setTimeout(()=>{
                 alertWrapper.style.display = 'none'
                 alertWrapper.style.animation = 'tip-enter 0.3s ease'
-                body.removeChild(alertWrapper)
                 resolve()
             },250)
         })  

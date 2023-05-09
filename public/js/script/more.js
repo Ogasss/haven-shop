@@ -1,56 +1,117 @@
 import { sendRequest } from '../hooks/sendRequest'
 
-const theType = window.location.href.split('?')[1].split('=')[1]
-
-
+const theKey = window.location.href.split('?')[1].split('=')[0]
+const theType = decodeURIComponent(window.location.href.split('?')[1].split('=')[1])
+console.log(theKey,theType)
 
 const backButton = document.getElementsByClassName('more-back-button')[0]
 backButton.addEventListener('click',()=>{
     history.go(-1)
 })
 
-
-
-
 const itemListInit = async () => {
     const needHiddenWrapper = document.getElementsByClassName('more-category-wrapper')[0]
     needHiddenWrapper.style.display = 'none'
-    const type_1Response = await sendRequest(
-        'POST',
-        '/category/get',
-        {
-            condition: `href = '${theType}'`
-        }
-    )
-    document.getElementsByClassName('more-header-title')[0].innerText = type_1Response.data[0].title
+    
+    let itemList = []
 
-    const type_2Response = await sendRequest(
-        'POST',
-        '/category/get',
-        {
-            condition: `theFrom is null`,
+    if(theKey === 'category'){
+        const type_1Response = await sendRequest(
+            'POST',
+            '/category/get',
+            {
+                condition: `href = '${theType}'`
+            }
+        )
+        document.getElementsByClassName('more-header-title')[0].innerText = type_1Response.data[0].title
+
+        const type_2Response = await sendRequest(
+            'POST',
+            '/category/get',
+            {
+                condition: `theFrom is null`,
+            }
+        )
+        const type_2List = type_2Response.data.map((item)=>{
+            return item.href
+        })
+        let theItemResponse
+        type_2List.indexOf(theType) === -1 ? 
+        theItemResponse = await sendRequest(
+            'POST',
+            '/item/get',
+            {
+                condition: `type_1 = '${theType}'`
+            }
+        ):
+        theItemResponse = await sendRequest(
+            'POST',
+            '/item/get',
+            {
+                condition: `${theType} = 1`
+            }
+        )
+        itemList = theItemResponse.data
+    }else{
+        document.getElementsByClassName('more-header-title')[0].innerText = theType
+        if(theType.length > 1){
+            let splitArr = []
+            if(theType.length<6){
+                for(let i=0; i<theType.length; i++){
+                    for(let j=i+1; j<=theType.length; j++){
+                        const sliceStr = theType.slice(i,j);
+                        splitArr.push(sliceStr);
+                    }
+                }
+            }
+
+            splitArr = splitArr.filter((item)=>{
+                return item.length > 1
+            })
+
+            splitArr.sort((a, b)=>{
+                return a.length - b.length
+            })
+
+            const getItemList = async () =>{
+                let promises = []
+                splitArr.forEach((item)=>{
+                    promises.push(
+                        sendRequest(
+                            'POST',
+                            '/item/get',
+                            {
+                                condition: `direction LIKE '%${item}%'`
+                            }
+                        )
+                    )
+                })
+                const itemListParts = await Promise.all(promises)
+                return itemListParts
+            }
+            const itemListParts = await getItemList()
+            let items = []
+            itemListParts.forEach((item)=>{
+                items = items.concat(Array.from(item.data))
+            })
+            let itemsIdList =  Array.from(new Set(items.map((item)=>{
+                return item.id
+            })))
+            const newItems = itemsIdList.map((id)=>{
+                return items.find((item) => item.id === id)
+            })
+            itemList = newItems
+        }else{
+            let response = await sendRequest(
+                'POST',
+                '/item/get',
+                {
+                    condition: `direction LIKE '%${theType}%'`
+                }
+            )
+            itemList = response.data
         }
-    )
-    const type_2List = type_2Response.data.map((item)=>{
-        return item.href
-    })
-    let theItemResponse
-    type_2List.indexOf(theType) === -1 ? 
-    theItemResponse = await sendRequest(
-        'POST',
-        '/item/get',
-        {
-            condition: `type_1 = '${theType}'`
-        }
-    ):
-    theItemResponse = await sendRequest(
-        'POST',
-        '/item/get',
-        {
-            condition: `${theType} = 1`
-        }
-    )
-    let itemList = theItemResponse.data
+    }
 
     const renderItemList = (itemList) => {
         let itemHTML = ``
@@ -69,7 +130,11 @@ const itemListInit = async () => {
                 }
                 
                 <div class="home-main-item-direction">
-                    ${item.direction.slice(0,20)}
+                    ${
+                        item.direction.length > 23  ?
+                        `${item.direction.slice(0,23)}...` :
+                        `${item.direction}`
+                    }
                 </div>
                 <div class="home-main-item-footer">
                     <div class="item-price-wrapper">
@@ -328,9 +393,13 @@ const categoryListInit = async () => {
     
 } 
 
-
-if(theType === 'none'){
-    categoryListInit()
-}else{
+if(theKey === 'category'){
+    if(theType === 'none'){
+        categoryListInit()
+    }else{
+        itemListInit()
+    }
+}
+else if(theKey === 'keyword'){
     itemListInit()
 }

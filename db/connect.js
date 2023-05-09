@@ -83,8 +83,8 @@ const connect = (database, sheet) => {
         let { sheet,condition } = options
         if(_database.sheet !== undefined) sheet = _database.sheet
         const promise = _database.sql(`delete from ${sheet} where ${condition}`)
-        _database.getRows(sheet).then((rows)=>{
-            _database.setAutoIncrement(sheet,rows)
+        connect(database).getRows(sheet).then((rows)=>{
+            connect(database).setAutoIncrement(sheet,rows)
         })
         return promise
     }
@@ -98,7 +98,7 @@ const connect = (database, sheet) => {
         if(_database.sheet !== undefined) sheet = _database.sheet
         return new Promise ((resolve)=>{
             const sql = `select count(*) from ${sheet}`
-            _database.connection.query(sql,(err,data)=>{
+            connect(database).connection.query(sql,(err,data)=>{
                 if(err) return console.log(err)
                 resolve(parseInt(JSON.stringify(data[0]).replace(/[^\d]/g,"")))
             })

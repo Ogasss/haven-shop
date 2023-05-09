@@ -2,6 +2,15 @@ import { getCookie } from '../hooks/getCookie'
 import { sendRequest } from '../hooks/sendRequest'
 
 const init = async () => {
+const searchButton = document.getElementsByClassName('home-search-right')[0]
+searchButton.addEventListener('click',()=>{
+    const searchInput = document.getElementsByClassName('home-search-input')[0]
+    const keyword = searchInput.value
+    if(keyword!==''){
+        location.href = `/app/more?keyword=${keyword}`
+    }
+})
+
 let itemList
 await sendRequest(
     'POST',

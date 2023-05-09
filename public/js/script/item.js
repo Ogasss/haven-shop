@@ -393,10 +393,12 @@ const init = async () =>{
                         })
                         newIndent.png = _pngList[pngIndex]
                         sessionStorage.setItem('choseIndentList',JSON.stringify([newIndent]))
-                        if(newIndent.png === undefined){
+                        if(newIndent.name === undefined){
+                            console.log(newIndent)
                             sessionStorage.removeItem('choseIndentList')
                             submitButton.click()
-                        }else{
+                        }
+                        else{
                             location.href = '/app/indent_submit'
                         }
                     })

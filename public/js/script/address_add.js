@@ -8,6 +8,13 @@ const init = async ()=>{
     let theAddress= ''
     let tag= ''
 
+    const nameInput = document.getElementsByClassName('the-input')[0]
+    const phoneInput = document.getElementsByClassName('the-input')[1]
+    const theAddressWrapper = document.getElementsByClassName('the-address-msg')[0]
+    const moreAddressWrapper = document.getElementsByClassName('the-more-address-input')[0]
+
+    const inputArr = [nameInput,phoneInput,theAddressWrapper,moreAddressWrapper]
+
     if(choseAddress === null){
         status = 'add'
         const titleWrapper = document.getElementsByClassName('indent-header-title')[0]
@@ -20,10 +27,6 @@ const init = async ()=>{
         titleWrapper.innerText = '修改地址'
         const submitButton = document.getElementsByClassName('address-main-submit-button')[0]
         submitButton.innerText = '修改'
-        const nameInput = document.getElementsByClassName('the-input')[0]
-        const phoneInput = document.getElementsByClassName('the-input')[1]
-        const theAddressWrapper = document.getElementsByClassName('the-address-msg')[0]
-        const moreAddressWrapper = document.getElementsByClassName('the-more-address-input')[0]
         
         nameInput.value = choseAddress.name
         phoneInput.value = choseAddress.phone
@@ -276,15 +279,13 @@ const init = async ()=>{
     
     
     
-    const verifyForm = (form) => {
-        let {
-            name,
-            phone,
-            theAddress,
-            moreAddress,
-            tag,
-            beDefault
-        } = form
+    const verifyForm = () => {
+        const nameInput = document.getElementsByClassName('the-input')[0]
+        const phoneInput = document.getElementsByClassName('the-input')[1]
+        const moreAddressInput = document.getElementsByClassName('the-more-address-input')[0]
+        let name = nameInput.value
+        let phone = phoneInput.value
+        let moreAddress = moreAddressInput.value
         for(;name.indexOf(' ') !== -1;){
            name =  name.splice(' ','')
         }
@@ -293,7 +294,7 @@ const init = async ()=>{
         }
         if(name.length === 0){
             return {
-                msg: '请输入收件人名称',
+                msg: '收件人名称还未填写',
                 error: ['name']
             }
         }else
@@ -305,44 +306,46 @@ const init = async ()=>{
         }else
         if(theAddress === ''){
             return {
-                msg: '请选择省市区/县',
+                msg: '省市区/县还未选择',
                 error: ['theAddress']
             }
         }else
         if(moreAddress === ''){
             return {
-                msg: '请输入详细地址',
+                msg: '详细地址还未填写',
                 error: ['moreAddress']
             }
         }else{
             return {
-                msg: '',
+                msg: '确认无误即可提交',
                 error: []
             }
         }
     }
+    inputArr.forEach((item)=>{
+        const verify = () => {
+            const errResponse = verifyForm()
+            document.getElementsByClassName('tip-word')[0].innerText = errResponse.msg
+            if(errResponse.error.length === 0){
+                document.getElementsByClassName('tip-word')[0].style.color = 'rgba(0,205,205, 0.8)'
+            }
+        }
+        item.addEventListener('click',()=>{
+            verify()
+        })
+        item.addEventListener('input',()=>{
+            verify()
+        })
+        choseTheAddressActionPadWrapper.addEventListener('click', ()=>{
+            verify()
+        })
+    })
 
     const submitButton = document.getElementsByClassName('address-main-submit-button')[0]
     submitButton.addEventListener('click', ()=>{
-        const nameInput = document.getElementsByClassName('the-input')[0]
-        const phoneInput = document.getElementsByClassName('the-input')[1]
-        const moreAddressInput = document.getElementsByClassName('the-more-address-input')[0]
-        let name = nameInput.value
-        let phone = phoneInput.value
-        let moreAddress = moreAddressInput.value
-        const verifyResponse = verifyForm({
-            name,
-            phone,
-            theAddress,
-            moreAddress,
-            tag,
-            beDefault
-        })
+        const verifyResponse = verifyForm()
         const {error} = verifyResponse
-        if(error.length !==0){
-            alert(verifyResponse.msg)
-            // theAlert(verifyResponse.msg)
-        }else{
+        if(error.length ===0){
             let newAddress = `${tag}:${theAddress}/${moreAddress}-${name}-${phone}`
             let addressString
             if(status === 'add'){
@@ -375,6 +378,8 @@ const init = async ()=>{
                 sessionStorage.removeItem('choseAddress')
                 location.href = '/app/address'
             })
+        }else{
+            alert(verifyResponse.msg)
         }
     })
 

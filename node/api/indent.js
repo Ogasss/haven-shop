@@ -74,7 +74,7 @@ const createIndent = async (indent) => {
     let action 
     if(targetIndent.length === 0 || parseInt(status) !== 1){
         action = dbOpen('haven')
-        action.create({
+        await action.create({
             sheet: 'indentList',
             header: ['item_id','number','more_type_0','more_type_1','from_user','status','want_time'],
             value: [parseInt(item_id), parseInt(number), more_type_0, more_type_1, from_user, parseInt(status), want_time]
@@ -84,14 +84,14 @@ const createIndent = async (indent) => {
         const targetIndentId = targetIndent[0].id
         const targetIndentNumber = targetIndent[0].number
         action = dbOpen('haven')
-        action.update({
+        await action.update({
             sheet: 'indentList',
             assign: `number = ${parseInt(targetIndentNumber) + parseInt(number)}`,
             condition: `id = ${targetIndentId}`
         })
         action = dbOpen('haven')
         nowTime = getNowTime()
-        action.update({
+        await action.update({
             sheet: 'indentList',
             assign: `buy_time = '${nowTime}'`,
             condition: `id = ${targetIndentId}`
@@ -179,9 +179,9 @@ router.post('/indent/update',(request, response)=>{
 
 
 
-router.post('/indent/create',(request, response)=>{
+router.post('/indent/create',async (request, response)=>{
     const indent = request.body
-    createIndent(indent)
+    await createIndent(indent)
     response.send()
 })
 

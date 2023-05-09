@@ -25,6 +25,18 @@ body{
         visibility: hidden;
     }
 
+.header-tip{
+    padding: 0 0.26rem;
+    display: flex;
+    align-items: center;
+    height: 0.6rem;
+    color: rgb(195, 105, 130);
+    background-color: white;
+    font-size: 0.35rem;
+    font-weight: bold;
+    opacity: 0.75;
+}
+
 .address-main{
 }
     .address-main-pad{

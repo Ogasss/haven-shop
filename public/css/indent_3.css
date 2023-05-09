@@ -1,0 +1,221 @@
+.indent-main{
+    padding: 0.26rem;
+    padding-bottom: 1.5rem;
+}   
+    .indent-option-wrapper{
+        border: 1px solid red;
+        border-radius: 2px;
+        height: 3.5rem;
+        background-color: white;
+    }
+
+    .indent-main{
+        padding: 0.26rem;
+        padding-bottom: 1.5rem;
+    }
+        .indent-main-indent-option{
+            position: relative;
+            margin-bottom: 0.26rem;
+            background-color: white;
+            border-radius: 5px 5px 0px 0px;
+            padding: 0.26rem;
+            font-size: 0.35rem;
+            overflow: hidden;
+        }
+            .indent-main-indent-wrapper{
+                margin-bottom: 0.13rem;
+            }
+            .indent-main-indent-row-1{
+                display: flex;
+            }
+                .indent-main-indent-img-wrapper{
+                    border: 1px solid rgb(220, 220, 220);
+                    width: 2rem;
+                    height: 2rem;
+                    overflow: hidden;
+                    margin-right: 0.26rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                    .indent-main-indent-img{
+                        width: 90%;
+                    }
+                .indent-main-indent-msg-wrapper{
+                    width: 4rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+                    .indent-main-indent-title{
+                        margin-bottom: 0.13rem;
+                    }
+                .indent-main-indent-params-wrapper{
+                    display: flex;
+                    color: rgb(120, 120, 120);
+                    font-size: 0.3rem;
+                }
+                    .indent-main-indent-type{
+                        padding: 0 3px;
+                        border: 1px solid rgb(220, 220, 220);
+                        margin-right: 0.13rem;
+                    }
+                    .indent-main-indent-tag{
+                        border: 1px solid rgb(205, 85, 85);
+                        padding: 0 3px;
+                        display: inline-block;
+                        color: rgb(205, 85, 85);
+                        opacity: 0.9;
+                        font-size: 0.3rem;
+                        margin-bottom: 0.13rem;
+                    }
+                    .indent-main-time-tag{
+                        border: 1px solid rgb(220, 220, 220);
+                        padding: 0 3px;
+                        display: inline-block;
+                        color: rgb(120, 120, 120);
+                        opacity: 0.9;
+                        font-size: 0.23rem;
+                    }
+                .indent-main-indent-old-price-wrapper{
+                    position: absolute;
+                    top: 1.3rem;
+                    right: 0.26rem;
+                    font-size: 0.35rem;
+                    font-weight: bold;
+                }
+        .indent-main-indent-discount-price-wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.26rem;
+            opacity: 0.85;
+            font-size: 0.4rem;
+        }
+            .indent-main-indent-discount-price-word{
+            }
+            .indent-main-indent-discount-price{
+                color: rgb(205, 85, 85);
+            }
+            
+        .indent-main-indent-price-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 0.26rem;
+        }
+        .indent-main-indent-price-msg{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.13rem;
+        }
+        .indent-main-indent-price-word{
+            font-size: 0.3rem;
+            opacity: 0.8;
+            margin-right: -0.13rem;
+        }
+        .indent-main-indent-price{
+            font-size: 0.4rem;
+            font-weight: bold;
+        }
+        .indent-main-discount-indent-price{
+            font-size: 0.2rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        .indent-main-indent-action-button{
+            display: flex;
+            justify-content: flex-end;
+        }
+            .indent-main-indent-cancel-button{
+                border: 1px solid rgb(220, 220, 220);
+                color: rgb(120, 120, 120);
+                width: 1.5rem;
+                height: 0.6rem;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.13rem;
+                font-size: 0.3rem;
+            }
+            .indent-main-indent-address-button{
+                background-color: rgb(0, 205, 205);
+                color: whitesmoke;
+                width: 1.5rem;
+                height: 0.6rem;
+                border-radius: 2px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0.13rem;
+                font-size: 0.3rem;
+            }
+
+        @keyframes address-pad-enter {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0%);
+            }
+        }
+        @keyframes address-pad-leave {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        .indent-main-indent-address-wrapper{
+            border-top: 1px solid rgb(220, 220, 220);
+            animation: address-pad-enter 0.3s ease;
+            display: none;
+        }
+            .indent-main-indent-address-option{
+                margin: 0.13rem 0;
+                padding: 0.13rem 0;
+                display: flex;
+            }
+                .indent-main-indent-address-option .img-wrapper{
+                    border: 2px solid rgb(205, 205, 205);
+                    width: 1rem;
+                    height: 1rem;
+                    border-radius: 2px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 0.26rem;
+                }
+                .indent-main-indent-address-option .line-wrapper{
+                    width: 1.2rem;
+                    height: 1.2rem;
+                    border-radius: 2px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                    .img-wrapper img{
+                        width: 70%;
+                        opacity: 0.6;
+                    }
+                    .line-wrapper .line{
+                        border-right: 2px solid rgb(220, 220, 220);
+                        height: 60%;
+                    }
+                
+                .indent-main-indent-address-option .msg-wrapper{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    margin-bottom: 0.26rem;
+                }
+                    .msg-wrapper .title{
+                        font-size: 0.3rem;
+                        opacity: 0.8;
+                    }
+                    .msg-wrapper .msg{
+                        font-weight: bold;
+                    }
