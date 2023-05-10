@@ -52,9 +52,13 @@ const itemListInit = async () => {
         )
         itemList = theItemResponse.data
     }else{
-        document.getElementsByClassName('more-header-title')[0].innerText = theType
+        let title
+        theType.length > 12 ? 
+        title = `${theType.slice(0,6)}...${theType.slice(theType.length-6,theType.length)}` :
+        title = `${theType}`
+        document.getElementsByClassName('more-header-title')[0].innerText = title
         
-        if(theType.length <= 1){
+        if(theType.length <= 1 || theType.length >= 10){
             let response = await sendRequest(
                 'POST',
                 '/item/get',
@@ -88,7 +92,6 @@ const itemListInit = async () => {
                 return a.length - b.length
             })
 
-            console.log(splitArr)
             const getItemList = async () =>{
                 let promises = []
                 splitArr.forEach((item)=>{

@@ -415,9 +415,8 @@ const init = () => {
         })
     }
     init()
-    
-    const backButton = document.getElementsByClassName('indent-header-back-button')[0]
-    backButton.addEventListener('click',()=>{
+
+    const indent_1Back = () => {
         if(indentList === undefined){
             location.href = '../../'
         }else{
@@ -434,6 +433,11 @@ const init = () => {
                 }, 0);
             })
         }
+    }
+    
+    const backButton = document.getElementsByClassName('search-header-back-button')[0]
+    backButton.addEventListener('click',()=>{
+        indent_1Back()
     })
     
     const actionSubmit = (status, string) => {

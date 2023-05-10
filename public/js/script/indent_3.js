@@ -87,7 +87,7 @@ const init = async () => {
     const indentTemplate = (item) => {
         let _date = new Date(item.buy_time)
         let {year,month,day,hour,minute,second} = Timer.newTimer(_date).date
-        let time = `${year}年${month}月${day}日 ${hour}:${minute}:${second}`
+        let time = `${year}年${month}月${day}日 ${hour}:${minute}`
         let totalPrice = parseInt(item.total_price)
         let nowAddress = item.now_address.split('/')[1]
         for(;nowAddress.indexOf('-') !== -1;){
@@ -274,7 +274,7 @@ const init = async () => {
     })
 }
 init()
-const backButton = document.getElementsByClassName('indent-header-back-button')[0]
+const backButton = document.getElementsByClassName('search-header-back-button')[0]
 backButton.addEventListener('click',()=>{
     location.href = '/app/my'
 })

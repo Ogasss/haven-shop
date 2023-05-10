@@ -1,12 +1,11 @@
+import  { sendRequest } from '../hooks/sendRequest'
+
 const backButton = document.getElementsByClassName('search-header-back-button')[0]
 backButton.addEventListener('click', ()=>{
     location.href='../../'
 })
 
-const searchButton = document.getElementsByClassName('home-search-right')[0]
-searchButton.addEventListener('click', ()=>{
-    const searchInput = document.getElementsByClassName('home-search-input')[0]
-    const keyword = searchInput.value
+const actionSearch = (keyword) =>{
     if(keyword!==''){
         let historyKeyword = localStorage.getItem('HavenHistoryKeyword')
         if(historyKeyword === null){
@@ -25,8 +24,71 @@ searchButton.addEventListener('click', ()=>{
         localStorage.setItem('HavenHistoryKeyword',JSON.stringify(historyKeyword))
         
         location.href = `/app/more?keyword=${keyword}`
-    }    
+    } 
+}
+
+const searchButton = document.getElementsByClassName('home-search-right')[0]
+searchButton.addEventListener('click', ()=>{
+    const searchInput = document.getElementsByClassName('home-search-input')[0]
+    const keyword = searchInput.value
+    actionSearch(keyword)
+})
+
+const searchInput = document.getElementsByClassName('home-search-input')[0]
+const aboutTip = document.getElementsByClassName('search-about-tip')[0]
+const tipWrapper = document.getElementsByClassName('search-about-tip-wrapper')[0]
+const renderTip = (tipList) => {
+    let tipHTML = ''
     
+    let tipTemplate = (item) => `
+        <div class="tip-option">
+            ${item}
+        </div>
+    `
+    tipList.forEach((item)=>{
+        tipHTML += tipTemplate(item)
+    })
+    tipWrapper.innerHTML = tipHTML
+
+    const tipOptions = Array.from(document.getElementsByClassName('tip-option'))
+    tipOptions.forEach((item,index)=>{
+        item.addEventListener('click',()=>{
+            actionSearch(tipList[index])
+        })
+    })
+}
+
+const showTips = async () => {
+    const keyword = searchInput.value.trim()
+    if(keyword.length !== 0){
+        const response = await sendRequest(
+            'POST',
+            '/item/get',
+            {
+                condition: `direction LIKE '%${keyword}%'`
+            }
+        )
+        let itemList = response.data
+        let tipList = itemList.map((item)=>{
+            return item.direction
+        })
+        renderTip(tipList)
+    }else{
+        tipWrapper.innerHTML = ``
+    }
+}
+searchInput.addEventListener('click',()=>{
+    aboutTip.style.display = 'block'
+    showTips()
+})
+searchInput.addEventListener('blur',()=>{
+    setTimeout(() => {
+       aboutTip.style.display = 'none'
+        showTips() 
+    }, 0);
+})
+searchInput.addEventListener('input',async ()=>{
+    showTips()
 })
 
 let historyKeyword = JSON.parse(localStorage.getItem('HavenHistoryKeyword'))
@@ -35,8 +97,12 @@ const renderTag = () => {
         const historyKeywordTemplate = (item) => {
             return `
             <div class="history-search-option">
-                <span class="history-search-key-word">
-                    ${item}
+                <span class="history-search-key-word" id="${item}">
+                ${
+                    item.length > 8 ? 
+                    `${item.slice(0,4)}...${item.slice(item.length-4,item.length)}` :
+                    `${item}`
+                }
                 </span>
                 <span class="history-search-option-delete">
                     x
@@ -89,7 +155,8 @@ const renderTag = () => {
 
                     renderTag(historyKeyword)  
                 }else{
-                    location.href = `/app/more?keyword=${item.innerText}`
+                    const id = item.getElementsByClassName('history-search-key-word')[0].id
+                    actionSearch(id)
                 }
             })
         })
