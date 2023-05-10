@@ -386,11 +386,17 @@ body{
                 background-color: white;
                 display: flex;
             }
-                .item-into-car-pad-header .header-img{
+                .header-img-wrapper{
                     border: 1px solid rgb(240, 240, 240);
                     width: 1.5rem;
                     height: 1.5rem;
                     margin-right: 0.26rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .item-into-car-pad-header .header-img{
+                    width: 100%;
                 }
                 .item-into-car-pad-header .close-button{
                     position: absolute;

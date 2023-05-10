@@ -100,13 +100,9 @@ const init = async () => {
                         </div>
                     </div>
                     <div class="indent-main-indent-tags-wrapper">
-                    ${
-                        item.tag ?
-                        `<div class="indent-main-indent-tag">
-                            ${item.tag}
-                        </div>`
-                        :''
-                    }
+                        <div class="indent-main-indent-tag">
+                            待付款
+                        </div>
                     </div>  
                 </div>
                 
@@ -247,10 +243,10 @@ const init = async () => {
     }
     renderIndentList(indentList)
     
-    const backButton = document.getElementsByClassName('search-header-back-button')[0]
-    backButton.addEventListener('click',()=>{
-        location.href = '/app/my'
-    })
+    // const backButton = document.getElementsByClassName('search-header-back-button')[0]
+    // backButton.addEventListener('click',()=>{
+    //     location.href = '/app/my'
+    // })
     
     const searchInput = document.getElementsByClassName('home-search-input')[0]
     searchInput.addEventListener('input', ()=>{

@@ -231,6 +231,7 @@ const init = () => {
             const indentImgElementList = Array.from(document.getElementsByClassName('indent-main-option-img-wrapper'))
             indentImgElementList.forEach((item, index)=>{
                 item.addEventListener('click',()=>{
+                    sessionStorage.setItem('HavenBackToCar', 1)
                     location.href = `/app/item/?item_id=${indentList[index].item_id}`
                 })
             })
@@ -425,9 +426,9 @@ const init = () => {
     }
     init()
 
-    const indent_1Back = () => {
+    const indent_1Back = (fun) => {
         if(indentList === undefined){
-            location.href = '../../'
+            fun()
         }else{
             let body = JSON.stringify(indentList)
             sendRequest(
@@ -438,20 +439,22 @@ const init = () => {
                 }
             ).then((response)=>{
                 setTimeout(() => {
-                    location.href = '../../'
+                    fun()
                 }, 0);
             })
         }
     }
-    
+
     const backButton = document.getElementsByClassName('search-header-back-button')[0]
     backButton.addEventListener('click',()=>{
-        indent_1Back()
+        indent_1Back(()=>{
+            location.href = '../../'
+        })
     })
     
     const tops = document.getElementsByClassName('indent-tops')[0]
     tops.addEventListener('click', ()=>{
-        indent_1Back()
+        indent_1Back(()=>{})
     })
 
     const actionSubmit = (status, string) => {
@@ -500,6 +503,7 @@ const init = () => {
                     }
                 ).then((response)=>{
                     setTimeout(() => {
+                        sessionStorage.setItem('HavenBackToCar', 1)
                         location.href = '/app/indent_submit'
                     }, 0);
                 })

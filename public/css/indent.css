@@ -34,7 +34,7 @@ body{
     z-index: 4;
 }
     .home-search-wrapper .home-search-part{
-        height: 5vh;
+        height: 0.7rem;
         display: flex;
         border-radius: 5px;
         background-color: rgb(245, 245, 245);
@@ -77,8 +77,8 @@ body{
                 height: 0.5rem;
             }
 .indent-tops{
-    /* position: sticky; */
-    /* top: 1rem; */
+    position: sticky;
+    top: 1rem;
     border-top: 1px solid rgb(240, 240, 240);
     height: 1rem;
     background-color: white;
@@ -86,6 +86,8 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 0 0.26rem;
+    z-index: 3;
+    border: 1px solid rgb(240, 240, 240);
 }
     .indent-top-wrapper{
         font-size: 0.3rem;

@@ -1,7 +1,7 @@
 export const sendRequest = (method,url,data) => {
     const options = {}
     options.method = method
-    // options.url = "http://192.168.1.105:4400" + url
+    // options.url = "http://192.168.1.103:4400" + url
     options.url = "http://127.0.0.1:4400" + url
     if(method.toUpperCase() === 'GET'){
         options.params = data

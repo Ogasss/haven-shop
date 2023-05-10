@@ -16,7 +16,13 @@ backButton.addEventListener('click',()=>{
         location.href = document.referrer
     }else{
         sessionStorage.removeItem('choseIndentList')
-        history.go(-1)
+        const backToCar = sessionStorage.getItem('HavenBackToCar')
+        if(backToCar === '1'){
+            sessionStorage.removeItem('HavenBackToCar')
+            location.href = '/app/indent?status=1'
+        }else{
+            history.go(-1)
+        }
     }
 })
 

@@ -3,7 +3,7 @@ export const theAlert = (string, fun) => {
     wrapper.style.display = 'flex'
     const pad = wrapper.getElementsByClassName('the-alert-pad')[0]
     pad.innerText = string
-    wrapper.addEventListener('click',()=>{
+    setTimeout(() => {
         wrapper.style.animation = 'tip-leave 0.3s ease'
         setTimeout(()=>{
             wrapper.style.display = 'none'
@@ -12,5 +12,5 @@ export const theAlert = (string, fun) => {
                 fun()
             }
         },250)
-    })  
+    }, 500);
 }

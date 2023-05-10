@@ -8,7 +8,14 @@ const init = async () =>{
         if(document.referrer.split('/')[4] === 'indent_1'){
             location.href = document.referrer
         }else{
-           history.go(-1) 
+            const backToCar = sessionStorage.getItem('HavenBackToCar')
+            if(backToCar === '1'){
+                sessionStorage.removeItem('HavenBackToCar')
+                location.href = '/app/indent?status=1'
+            }else{
+                history.go(-1) 
+            }
+           
         }
     })
 

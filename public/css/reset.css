@@ -196,7 +196,7 @@ body{
     animation: tip-enter 0.3s ease;
     padding-bottom: 30%;
     z-index: 4;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
     display: none;
 }
     .the-alert-pad{

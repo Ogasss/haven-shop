@@ -81,11 +81,11 @@ eyeButton.addEventListener('click',()=>{
     let passwordInput = document.getElementsByClassName('signin-password-input')[0]
     let eyeStatus = eyeButton.src.split('/')[4]
     if(eyeStatus === 'eye-show'){
-        eyeButton.src = 'http://127.0.0.1:4400/png/eye-hidden'
+        eyeButton.src = '/png/eye-hidden'
         passwordInput.type = 'password'
     }else
     if(eyeStatus === 'eye-hidden'){
-        eyeButton.src = 'http://127.0.0.1:4400/png/eye-show'
+        eyeButton.src = '/png/eye-show'
         passwordInput.type = 'text'
     }
 })

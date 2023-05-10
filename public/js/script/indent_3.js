@@ -288,7 +288,7 @@ const init = async () => {
     })
 }
 init()
-const backButton = document.getElementsByClassName('search-header-back-button')[0]
-backButton.addEventListener('click',()=>{
-    location.href = '/app/my'
-})
+// const backButton = document.getElementsByClassName('search-header-back-button')[0]
+// backButton.addEventListener('click',()=>{
+//     location.href = '/app/my'
+// })
