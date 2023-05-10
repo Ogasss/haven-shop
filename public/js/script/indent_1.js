@@ -67,7 +67,7 @@ const init = () => {
                 })
             })
         }
-        const indentRender = (indentList) => {
+        const renderIndentList = (indentList) => {
             let indentHTML = ``
     
             const actionTotalPrice = () => {
@@ -410,8 +410,17 @@ const init = () => {
                 const allChoseWrapper = document.getElementsByClassName('indent-main-tops')[0]
                 allChoseWrapper.style.display = 'none'
             }else{
-                indentRender(indentList)
+                renderIndentList(indentList)
             }
+        })
+
+        const searchInput = document.getElementsByClassName('home-search-input')[0]
+        searchInput.addEventListener('input', ()=>{
+            let keyword = searchInput.value
+            let searchIndentList = indentList.filter((item)=>{
+                return item.name.indexOf(keyword) !== -1
+            })
+            renderIndentList(searchIndentList)
         })
     }
     init()
@@ -440,6 +449,11 @@ const init = () => {
         indent_1Back()
     })
     
+    const tops = document.getElementsByClassName('indent-tops')[0]
+    tops.addEventListener('click', ()=>{
+        indent_1Back()
+    })
+
     const actionSubmit = (status, string) => {
         let flag = false
         let choseIndentList = []

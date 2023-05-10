@@ -3,12 +3,15 @@ import { component } from "../hooks/setComponent"
 let wrapper = document.createElement('div')
 wrapper.id = `indent_${status}`
 document.body.appendChild(wrapper)
-const titleWrapper = document.getElementsByClassName('indent-header-title')[0]
+document.getElementById(`status_${status}`).className = `indent-top-wrapper-active`
 
-// status == 1 ? titleWrapper.innerText = '购物车' :
-// status == 2 ? titleWrapper.innerText = '代付款' :
-// status == 3 ? titleWrapper.innerText = '待收货' : 
-// status == 4 ? titleWrapper.innerText = '售后' : ''
+let statusArr = [1,2,3,4]
+
+statusArr.forEach((status)=>{
+    document.getElementById(`status_${status}`).addEventListener('click',()=>{
+        location.href = `/app/indent?status=${status}`
+    })
+})
 
 component.setComponent(`indent_${status}`,`indent_${status}`).then(()=>{
     component.setScript(`indent_${status}`)

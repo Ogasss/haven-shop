@@ -83,194 +83,208 @@ const init = async () => {
     if(indentList === false){
         return
     }
-
-    const indentTemplate = (item) => {
-        let _date = new Date(item.buy_time)
-        let {year,month,day,hour,minute,second} = Timer.newTimer(_date).date
-        let time = `${year}年${month}月${day}日 ${hour}:${minute}`
-        let totalPrice = parseInt(item.total_price)
-        let nowAddress = item.now_address.split('/')[1]
-        for(;nowAddress.indexOf('-') !== -1;){
-            nowAddress = nowAddress.replace('-','')
-        }
-        let theAddress = item.get_address.split(':')[1].split('-')[0].replace('/','')
-        return `
-    <div class="indent-main-indent-option">
-        <div class="indent-main-indent-wrapper">
-                <div class="indent-main-indent-row-1">
-                    <div>
-                        <a href='/app/item/?item_id=${item.item_id}' class="indent-main-indent-img-wrapper">
-                            <img src=${item.png} class="indent-main-indent-img">
-                        </a>
-                    </div>  
-                    <div class="indent-main-indent-msg-wrapper">
-                        <div class="indent-main-indent-title-wrapper">
-                            <span class="indent-main-indent-title">
-                                ${item.name.slice(0,23)}...
-                            </span>
+    
+    const renderIndentList = (indentList) => {
+        const indentTemplate = (item) => {
+            let _date = new Date(item.buy_time)
+            let {year,month,day,hour,minute,second} = Timer.newTimer(_date).date
+            minute < 10 ? minute = `0${minute}` : ''
+            let time = `${year}年${month}月${day}日 ${hour}:${minute}`
+            let totalPrice = parseInt(item.total_price)
+            let nowAddress = item.now_address.split('/')[1]
+            for(;nowAddress.indexOf('-') !== -1;){
+                nowAddress = nowAddress.replace('-','')
+            }
+            let theAddress = item.get_address.split(':')[1].split('-')[0].replace('/','')
+            return `
+        <div class="indent-main-indent-option">
+            <div class="indent-main-indent-wrapper">
+                    <div class="indent-main-indent-row-1">
+                        <div>
+                            <a href='/app/item/?item_id=${item.item_id}' class="indent-main-indent-img-wrapper">
+                                <img src=${item.png} class="indent-main-indent-img">
+                            </a>
+                        </div>  
+                        <div class="indent-main-indent-msg-wrapper">
+                            <div class="indent-main-indent-title-wrapper">
+                                <span class="indent-main-indent-title">
+                                    ${item.name.slice(0,23)}...
+                                </span>
+                            </div>
+                            
+                            <div class="indent-main-indent-params-wrapper">
+                                <div class="indent-main-indent-type">
+                                    ${item.more_type_0}
+                                </div>
+                                <div class="indent-main-indent-type">
+                                    ${item.more_type_1}
+                                </div>
+                                <div class="indent-main-indent-number">
+                                    数量:${item.number}
+                                </div>
+                            </div>
+                            <div class="indent-main-indent-tags-wrapper">
+                                <div class="indent-main-indent-tag">
+                                    ${
+                                        item.status === 3 ? '待发货' :
+                                        item.status === 4 ? '待送达' :
+                                        item.status === 5 ? '待收货' : ''
+                                    }
+                                </div>
+                            </div>  
                         </div>
                         
-                        <div class="indent-main-indent-params-wrapper">
-                            <div class="indent-main-indent-type">
-                                ${item.more_type_0}
-                            </div>
-                            <div class="indent-main-indent-type">
-                                ${item.more_type_1}
-                            </div>
-                            <div class="indent-main-indent-number">
-                                数量:${item.number}
-                            </div>
+                        <div class="indent-main-indent-old-price-wrapper">
+                            <div></div>
                         </div>
-                        <div class="indent-main-indent-tags-wrapper">
-                            <div class="indent-main-indent-tag">
-                                ${
-                                    item.status === 3 ? '待发货' :
-                                    item.status === 4 ? '待送达' :
-                                    item.status === 5 ? '待收货' : ''
-                                }
-                            </div>
-                        </div>  
+                    </div>
+            </div>
+            <div class="indent-main-indent-price-wrapper">
+                    <div class="indent-main-indent-price-msg">
+                        <div>
+                            <span class="indent-main-indent-price-word">
+                                付款：
+                            </span>
+                            <span class="indent-main-indent-price">
+                                ¥ ${totalPrice.toFixed(2)}
+                            </span>
+                        </div>
+                        <div class="indent-main-time-tag">
+                            ${time}
+                        </div>
+                    </div>
+                    <div class="indent-main-indent-action-button">
+                        <div class="indent-main-indent-cancel-button">
+                            退款
+                        </div>
+                        <div class="indent-main-indent-address-button">
+                            物流
+                        </div>
+                    </div>
+            </div>
+            <div class="indent-main-indent-address-wrapper">
+                <div class="indent-main-indent-address-option now-address">
+                    <div class="the-img-wrapper">
+                        <div class="img-wrapper">
+                            <img src="/png/sending">
+                        </div>
+                        <div class="line-wrapper">
+                            <div class="line"></div>
+                        </div>
+                        <div class="img-wrapper">
+                            <img src="/png/needget">
+                        </div>
                     </div>
                     
-                    <div class="indent-main-indent-old-price-wrapper">
-                        <div></div>
-                    </div>
-                </div>
-        </div>
-        <div class="indent-main-indent-price-wrapper">
-                <div class="indent-main-indent-price-msg">
-                    <div>
-                        <span class="indent-main-indent-price-word">
-                            付款：
-                        </span>
-                        <span class="indent-main-indent-price">
-                            ¥ ${totalPrice.toFixed(2)}
-                        </span>
-                    </div>
-                    <div class="indent-main-time-tag">
-                        ${time}
-                    </div>
-                </div>
-                <div class="indent-main-indent-action-button">
-                    <div class="indent-main-indent-cancel-button">
-                        退款
-                    </div>
-                    <div class="indent-main-indent-address-button">
-                        物流
-                    </div>
-                </div>
-        </div>
-        <div class="indent-main-indent-address-wrapper">
-            <div class="indent-main-indent-address-option now-address">
-                <div class="the-img-wrapper">
-                    <div class="img-wrapper">
-                        <img src="/png/sending">
-                    </div>
-                    <div class="line-wrapper">
-                        <div class="line"></div>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="/png/needget">
-                    </div>
-                </div>
-                
-                <div class="the-msg-wrapper">
-                    <div class="msg-wrapper">
-                        <div class="title">当前位置</div>
-                        <div class="msg">
-                            <span class="now_place">
-                                    ${nowAddress}
-                            </span>
+                    <div class="the-msg-wrapper">
+                        <div class="msg-wrapper">
+                            <div class="title">当前位置</div>
+                            <div class="msg">
+                                <span class="now_place">
+                                        ${nowAddress}
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="msg-wrapper">
-                        <div class="title">收货地址</div>
-                        <div class="msg">
-                            <span class="now_place">
-                                    ${theAddress}
-                            </span>
+                        <div class="msg-wrapper">
+                            <div class="title">收货地址</div>
+                            <div class="msg">
+                                <span class="now_place">
+                                        ${theAddress}
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="msg-wrapper">
-                        <div class="title">货运状态</div>
-                        <div class="msg">
-                            <span class="now_place">
-                                    ${
-                                        item.status === 3 ? '等待商家发货' :
-                                        item.status === 4 ? `预计${item.transport_time}天后到达收货地址` :
-                                        item.status === 5 ? `已经到了哦，快去取货吧` : ''
-                                    }
-                            </span>
+                        <div class="msg-wrapper">
+                            <div class="title">货运状态</div>
+                            <div class="msg">
+                                <span class="now_place">
+                                        ${
+                                            item.status === 3 ? '等待商家发货' :
+                                            item.status === 4 ? `预计${item.transport_time}天后到达收货地址` :
+                                            item.status === 5 ? `已经到了哦，快去取货吧` : ''
+                                        }
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        `
-    }
-
-    let indentListHTML = ``
-    indentList.forEach((item) => {
-        if(item.name === undefined){
-            indentListHTML = ''
-            init()
-        }else{
-            indentListHTML += indentTemplate(item)
+            `
         }
-    })
-    indentListWrapper.innerHTML = indentListHTML
 
-    const addressShowButton = Array.from(document.getElementsByClassName('indent-main-indent-address-button'))
-    const addressWrapper = Array.from(document.getElementsByClassName('indent-main-indent-address-wrapper'))
-    const addressPad = Array.from(document.getElementsByClassName('indent-main-indent-address-option'))
-    addressShowButton.forEach((item, index)=>{
-        item.addEventListener('click', ()=>{
-            if(addressWrapper[index].style.display === '' || addressWrapper[index].style.display === 'none'){
-                addressWrapper[index].style.display = 'block'
+        let indentListHTML = ``
+        indentList.forEach((item) => {
+            if(item.name === undefined){
+                indentListHTML = ''
+                init()
             }else{
-                addressPad[index].style.animation = 'address-pad-leave 0.3s ease'
-                setTimeout(()=>{
-                    addressWrapper[index].style.display = 'none'
-                    addressPad[index].style.animation = 'address-pad-enter 0.3s ease'
-                },250)
+                indentListHTML += indentTemplate(item)
             }
         })
-    })
+        indentListWrapper.innerHTML = indentListHTML
 
-    const deleteButton = Array.from(document.getElementsByClassName('indent-main-indent-cancel-button'))
-    const theConfirm = (string,fun) => {
-        const wrapper = document.getElementsByClassName('the-confirm-wrapper')[0]
-        wrapper.style.display='flex'
-        const pad = wrapper.getElementsByClassName('the-confirm-tip')[0]
-        pad.innerText = string
-        const cancelButton = wrapper.getElementsByClassName('the-confirm-cancel-button')[0]
-        cancelButton.addEventListener('click',()=>{
-            wrapper.style.display = 'none'
+        const addressShowButton = Array.from(document.getElementsByClassName('indent-main-indent-address-button'))
+        const addressWrapper = Array.from(document.getElementsByClassName('indent-main-indent-address-wrapper'))
+        const addressPad = Array.from(document.getElementsByClassName('indent-main-indent-address-option'))
+        addressShowButton.forEach((item, index)=>{
+            item.addEventListener('click', ()=>{
+                if(addressWrapper[index].style.display === '' || addressWrapper[index].style.display === 'none'){
+                    addressWrapper[index].style.display = 'block'
+                }else{
+                    addressPad[index].style.animation = 'address-pad-leave 0.3s ease'
+                    setTimeout(()=>{
+                        addressWrapper[index].style.display = 'none'
+                        addressPad[index].style.animation = 'address-pad-enter 0.3s ease'
+                    },250)
+                }
+            })
         })
-        const confirmButton = wrapper.getElementsByClassName('the-confirm-confirm-button')[0]
-        confirmButton.addEventListener('click',()=>{
-            wrapper.style.display = 'none'
-            fun()
+
+        const deleteButton = Array.from(document.getElementsByClassName('indent-main-indent-cancel-button'))
+        const theConfirm = (string,fun) => {
+            const wrapper = document.getElementsByClassName('the-confirm-wrapper')[0]
+            wrapper.style.display='flex'
+            const pad = wrapper.getElementsByClassName('the-confirm-tip')[0]
+            pad.innerText = string
+            const cancelButton = wrapper.getElementsByClassName('the-confirm-cancel-button')[0]
+            cancelButton.addEventListener('click',()=>{
+                wrapper.style.display = 'none'
+            })
+            const confirmButton = wrapper.getElementsByClassName('the-confirm-confirm-button')[0]
+            confirmButton.addEventListener('click',()=>{
+                wrapper.style.display = 'none'
+                fun()
+            })
+        }
+        deleteButton.forEach((item, index)=>{
+            item.addEventListener('click',()=>{
+                theConfirm('确定退款取消订单？',
+                    ()=>{
+                        sendRequest(
+                            'POST',
+                            '/indent/update',
+                            {
+                                indentId: indentList[index].id,
+                                assign: `status = 0`
+                            }
+                        ).then(()=>{
+                            init()
+                        })          
+                    }
+                )
+            })
         })
     }
-    deleteButton.forEach((item, index)=>{
-        item.addEventListener('click',()=>{
-            theConfirm('确定退款取消订单？',
-                ()=>{
-                    sendRequest(
-                        'POST',
-                        '/indent/update',
-                        {
-                            indentId: indentList[index].id,
-                            assign: `status = 0`
-                        }
-                    ).then(()=>{
-                        init()
-                    })          
-                }
-            )
+
+    renderIndentList(indentList)
+
+    const searchInput = document.getElementsByClassName('home-search-input')[0]
+    searchInput.addEventListener('input', ()=>{
+        let keyword = searchInput.value
+        let searchIndentList = indentList.filter((item)=>{
+            return item.name.indexOf(keyword) !== -1
         })
+        renderIndentList(searchIndentList)
     })
 }
 init()
