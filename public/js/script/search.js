@@ -72,7 +72,7 @@ const showTips = async () => {
         let tipList = itemList.map((item)=>{
             return item.direction
         })
-        renderTip(tipList)
+        renderTip(tipList.reverse())
     }else{
         tipWrapper.innerHTML = ``
     }

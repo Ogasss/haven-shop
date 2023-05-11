@@ -14,7 +14,7 @@ if(parseInt(status) === 1){
     })
 }
 
-let statusArr = ['all',2,3,4]
+let statusArr = ['all',2,3,6]
 
 statusArr.forEach((status)=>{
     document.getElementById(`status_${status}`).addEventListener('click',()=>{

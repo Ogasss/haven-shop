@@ -21,7 +21,7 @@ const loginUser = (username, password, userList, action) => {
     if(bcrypt.compareSync(password,_password)){
         const token = jwt.sign(
             {
-                username: username,
+                userId: _id,
             },
             tokenSecret,
             {

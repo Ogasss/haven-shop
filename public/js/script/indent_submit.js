@@ -58,6 +58,7 @@ const getIndentList = () => {
                 item.brand = itemList.brand
                 item.total_price = item.number * item.price
                 item.discount_price = (itemList.price - item.price) * item.number
+                item.item_total_number = itemList.number
                 if(index === arr.length-1){
                     resolve(indentList)
                 }
@@ -404,6 +405,14 @@ getIndentList().then((indentList)=>{
                             {
                                 indentId: item.id,
                                 assign: `buy_time = '${nowTime}'`
+                            }
+                        )
+                        await sendRequest(
+                            'POST',
+                            '/item/update',
+                            {
+                                assign: `number = ${item.item_total_number - item.number}`,
+                                condition: `id = ${item.item_id}`
                             }
                         )
                         if(index === arr.length-1){

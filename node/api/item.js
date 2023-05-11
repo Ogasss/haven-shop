@@ -30,5 +30,15 @@ router.post('/item/get',async (request, response)=>{
         response.send(itemList)
     }
 })
-
+router.post('/item/update',async (request, response)=>{
+    const action = dbOpen('haven')
+    const { condition,assign } = request.body
+    action.update({
+        sheet: 'itemList',
+        assign,
+        condition
+    }).then(()=>{
+        response.send()
+    })
+})
 exports.itemRouter = router

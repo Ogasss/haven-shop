@@ -20,6 +20,11 @@ const init = async () => {
             }
         )
         const _indentList = response.data
+        _indentList.sort((front, after) =>{
+            let front_time = new Date(front.buy_time)
+            let after_time = new Date(after.buy_time)
+            return front_time - after_time
+        })
         
         const _getIndentList = () => {
             return new Promise((resolve) => {
@@ -65,6 +70,7 @@ const init = async () => {
                         item.old_price = response.data[0].price
                         item.discount = response.data[0].discount
                         item.brand = response.data[0].brand
+                        item.item_total_number = response.data[0].number
                         item.total_price = parseInt(item.number) * parseInt(item.price)
                         item.discount_price = (parseInt(response.data[0].price) - parseInt(item.price)) * parseInt(item.number)
                         item.chose = false
@@ -259,17 +265,24 @@ const init = async () => {
         deleteButton.forEach((item, index)=>{
             item.addEventListener('click',()=>{
                 theConfirm('确定退款取消订单？',
-                    ()=>{
-                        sendRequest(
+                    async ()=>{
+                        await sendRequest(
                             'POST',
                             '/indent/update',
                             {
                                 indentId: indentList[index].id,
                                 assign: `status = 0`
                             }
-                        ).then(()=>{
-                            init()
-                        })          
+                        )
+                        await sendRequest(
+                            'POST',
+                            '/item/update',
+                            {
+                                assign: `number = ${parseInt(indentList[index].item_total_number) + parseInt(indentList[index].number)}`,
+                                condition: `id = ${indentList[index].item_id}`
+                            }
+                        )
+                        init()          
                     }
                 )
             })

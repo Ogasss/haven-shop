@@ -38,16 +38,17 @@ const init = async () =>{
     const {data} = await sendRequest('POST','/item/get',{
         id: itemId
     })
-    let image = data[0]
+    let theItemMsg = data[0]
+    console.log(theItemMsg)
     const price = document.getElementsByClassName('item-main-the-price')[0]
     const oldPrice = document.getElementsByClassName('item-main-old-price')[0]
-    if(image.discount === null){
-        image.price.toFixed(2)
-        price.innerText = image.price.toFixed(2)
+    if(theItemMsg.discount === null){
+        theItemMsg.price.toFixed(2)
+        price.innerText = theItemMsg.price.toFixed(2)
         oldPrice.remove()
     }else{
-        price.innerText = (image.price * image.discount).toFixed(2)
-        oldPrice.innerText = image.price.toFixed(2)
+        price.innerText = (theItemMsg.price * theItemMsg.discount).toFixed(2)
+        oldPrice.innerText = theItemMsg.price.toFixed(2)
     }
     
 
@@ -56,17 +57,29 @@ const init = async () =>{
 
 
     
-    oldPrice.innerText = image.price.toFixed(2)
-    const buyer = document.getElementsByClassName('item-main-buyer-number')[0]
-    buyer.innerText = `${image.volume}付款`
-    const wanter = document.getElementsByClassName('item-main-want-number')[0]
-    wanter.innerText = `${image.wanter}收藏`
+    oldPrice.innerText = theItemMsg.price.toFixed(2)
+    const buyer = document.getElementsByClassName('item-main-number')[0]
+    let buyerNumber = 0
+    theItemMsg.volume > 10000 ? buyerNumber = `${parseInt(theItemMsg.volume/1000)}k` : buyerNumber = theItemMsg.volume
+    buyer.innerText = `${buyerNumber}付款`
+
+    const wanter = document.getElementsByClassName('item-main-number')[1]
+    let wanterNumber = 0
+    theItemMsg.wanter > 10000 ? wanterNumber = `${parseInt(theItemMsg.wanter/1000)}k` : wanterNumber = theItemMsg.wanter
+    wanter.innerText = `${wanterNumber}收藏`
+
+    const number = document.getElementsByClassName('item-main-number')[2]
+    let itemNumber = 0
+    theItemMsg.number > 10000 ? itemNumber = `${parseInt(theItemMsg.number/1000)}k` : itemNumber = theItemMsg.number
+    number.innerText = `${itemNumber}库存`
+
+
     const tag = document.getElementsByClassName('item-main-tag')[0]
-    image.tag === null ? tag.style.border = 'none' : tag.innerText = image.tag
+    theItemMsg.tag === null ? tag.style.border = 'none' : tag.innerText = theItemMsg.tag
     const direction = document.getElementsByClassName('item-main-text-row')[0]
-    direction.innerText = image.direction
+    direction.innerText = theItemMsg.direction
     const brand = document.getElementsByClassName('item-main-volume-word')[0]
-    brand.innerText = `${image.brand}品牌优质商品`
+    brand.innerText = `${theItemMsg.brand}品牌优质商品`
 
 
 
@@ -74,7 +87,7 @@ const init = async () =>{
 
 
 
-    const imgList = JSON.parse(image.png)
+    const imgList = JSON.parse(theItemMsg.png)
     const imgWrapper = document.getElementsByClassName('item-main-img-row-wrapper')[0]
     imgWrapper.innerHTML = `
     <div class="item-main-img-row-images" style="width: ${100*imgList.length}vw">
@@ -117,15 +130,16 @@ const init = async () =>{
     let oldImgIndex = 0
     imgListWrapper.innerHTML = imgListHTML
     imgOptionWrapper.innerHTML = imgOptionHTML
+    let img
     const itemListArr = Array.from(document.getElementsByClassName('img-row-list-option'))
     const imgOptionClick = (index) => {
-        image = itemListArr[index]
+        img = itemListArr[index]
         const width = document.getElementsByClassName('item-main-img-option')[0].clientWidth
         imgWrapper.scrollTo({
             left:width * index,
             behavior: 'smooth',
         })
-        image.style.border = `1px solid rgb(160, 160, 160)`
+        img.style.border = `1px solid rgb(160, 160, 160)`
         imgIndex = index
         itemListArr.forEach((item, index)=>{
             if(index !== imgIndex){
@@ -331,7 +345,9 @@ const init = async () =>{
         })
         const addButton = document.getElementsByClassName('action-add')[0]
         addButton.addEventListener('click', ()=>{
-            number += 1
+            if(number < parseInt(theItemMsg.number)){
+                number += 1
+            }
             msgRender()
         })
         
@@ -342,6 +358,13 @@ const init = async () =>{
         let from_user = cookies.havenUid
         if(cookies.havenUid === undefined && cookies.havenToken === undefined){
             buyButton.innerText = `请先登录`
+            buyButton.style.opacity = '0.4'
+            carButton.style.opacity = '0.4'
+            buyButton.style.pointerEvents = 'none'
+            carButton.style.pointerEvents = 'none'
+        }
+        if(theItemMsg.number <= 0){
+            buyButton.innerText = `商品缺货`
             buyButton.style.opacity = '0.4'
             carButton.style.opacity = '0.4'
             buyButton.style.pointerEvents = 'none'
@@ -369,49 +392,63 @@ const init = async () =>{
                     closeButton.click()
                     theAlert('已成功加入购物车')
                 })
-            }else{
-                indent.status = 2
+            }else
+            {
                 sendRequest(
                     'POST',
-                    '/indent/create',
-                    indent
-                ).then(()=>{
-                    sendRequest(
-                        'POST',
-                        '/indent/getNew',
-                    ).then((response)=>{
-                        newIndent = response.data[0]
-                        newIndent.name = item.direction
-                        newIndent.price = item.price * item.discount
-                        let _pngList = item.png.split(',')
-                        _pngList = _pngList.map((item, index)=>{
-                            return item.split('"')[1]
+                    '/item/get',
+                    {
+                        id: theItemMsg.id
+                    }
+                ).then((response)=>{
+                    const theItemMsg = response.data[0]
+                    if(parseInt(theItemMsg.number) - number < 0){
+                        theAlert('商品已缺货')
+                    }else{
+                        sendRequest(
+                            'POST',
+                            '/indent/create',
+                            indent
+                        ).then(()=>{
+                            sendRequest(
+                                'POST',
+                                '/indent/getNew',
+                            ).then((response)=>{
+                                newIndent = response.data[0]
+                                newIndent.name = item.direction
+                                newIndent.price = item.price * item.discount
+                                let _pngList = item.png.split(',')
+                                _pngList = _pngList.map((item, index)=>{
+                                    return item.split('"')[1]
+                                })
+                                let _paramList = item.more_type_0.split(',').map((item)=>{
+                                    item = item.replace('"','')
+                                    item = item.replace('"','')
+                                    item = item.replace('[','')
+                                    item = item.replace(']','')
+                                    return item
+                                })
+                                let pngIndex 
+                                _paramList.forEach((_item, _index)=>{
+                                    if(_item === newIndent.more_type_0){
+                                        pngIndex = _index
+                                    }
+                                })
+                                newIndent.png = _pngList[pngIndex]
+                                sessionStorage.setItem('choseIndentList',JSON.stringify([newIndent]))
+                                if(newIndent.name === undefined){
+                                    console.log(newIndent)
+                                    sessionStorage.removeItem('choseIndentList')
+                                    submitButton.click()
+                                }
+                                else{
+                                    location.href = '/app/indent_submit'
+                                }
+                            })
                         })
-                        let _paramList = item.more_type_0.split(',').map((item)=>{
-                            item = item.replace('"','')
-                            item = item.replace('"','')
-                            item = item.replace('[','')
-                            item = item.replace(']','')
-                            return item
-                        })
-                        let pngIndex 
-                        _paramList.forEach((_item, _index)=>{
-                            if(_item === newIndent.more_type_0){
-                                pngIndex = _index
-                            }
-                        })
-                        newIndent.png = _pngList[pngIndex]
-                        sessionStorage.setItem('choseIndentList',JSON.stringify([newIndent]))
-                        if(newIndent.name === undefined){
-                            console.log(newIndent)
-                            sessionStorage.removeItem('choseIndentList')
-                            submitButton.click()
-                        }
-                        else{
-                            location.href = '/app/indent_submit'
-                        }
-                    })
-                })
+                    }
+                })   
+                
             }
         })
     }

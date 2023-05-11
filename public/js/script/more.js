@@ -58,7 +58,7 @@ const itemListInit = async () => {
         title = `${theType}`
         document.getElementsByClassName('more-header-title')[0].innerText = title
         
-        if(theType.length <= 1 || theType.length >= 10){
+        if(theType.length <= 1 ){
             let response = await sendRequest(
                 'POST',
                 '/item/get',
@@ -67,7 +67,8 @@ const itemListInit = async () => {
                 }
             )
             itemList = response.data
-        }else{
+        }else
+        if(theType.length > 1 && theType.length <= 12){
             let splitArr = []
 
             for(let i=0; i<theType.length; i++){
@@ -120,6 +121,16 @@ const itemListInit = async () => {
                 return items.find((item) => item.id === id)
             })
             itemList = newItems
+        }else
+        if(theType.length > 12){
+            let response = await sendRequest(
+                'POST',
+                '/item/get',
+                {
+                    condition: `direction LIKE '%${theType}%'`
+                }
+            )
+            itemList = response.data
         }
     }
 

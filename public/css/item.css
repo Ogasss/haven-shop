@@ -179,8 +179,11 @@ body{
             justify-content: space-between;
             align-items: flex-end;
         }
+            .item-main-discount-price{
+                display: flex;
+                align-items: flex-end;
+            }
             .item-main-price-left-part{
-                width: 100%;
                 display: flex;
                 align-items: flex-end;
             }
@@ -203,14 +206,15 @@ body{
 
             .item-main-price-right-part{
                 display: flex;
-                font-size: 0.2rem;
-                align-items: flex-end;
-                justify-content: space-between;
-                width: 50%;
+                font-size: 0.1rem;
+                justify-content: flex-end;
                 min-width: 130px;
                 opacity: 0.6;
                 padding-bottom: 0.1rem;
             }
+                .item-main-number{
+                    margin-left: 0.13rem;
+                }
 
             .item-main-bottom-row{
                 font-size: 0.2rem;
